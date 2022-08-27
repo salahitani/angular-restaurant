@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, OnInit} from '@angular/core';
+
+
 
 @Component({
   selector: 'app-root',
@@ -7,22 +9,8 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'cms';
-  mode = 'light';
-  cafe = 'you';
-  isVisible = false;
-  dynamicColor = 'blue'
-  divClasses = {
-    'light-mode': this.mode === 'light',
-    'dark-mode': this.mode !== 'light'
-  };
-  styles = {
-    'background-color': this.mode === 'light' ? 'yellow' : 'black',
-    'color': 'white',
-    'margin-top': '10px'
-  };
-
-  logSomething() {
-    this.mode = this.mode === 'dark' ? 'light' : 'dark';
-    this.styles['background-color'] = this.mode === 'light' ? 'yellow' : 'black';
-  };
+ 
+  //imageSrc = 'C:\Users\user\OneDrive\Desktop\Angular Sessions\Session1\cms\Images\Logo1.png'; 
+  
+ 
 }
