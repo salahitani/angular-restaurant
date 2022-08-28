@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {FormGroup, FormControl, Validators } from '@angular/forms';
-import {FormsModule,ReactiveFormsModule} from '@angular/forms';
+import { Router } from '@angular/router';
+
 
 @Component({
   selector: 'app-log-in-form',
@@ -10,16 +11,22 @@ import {FormsModule,ReactiveFormsModule} from '@angular/forms';
 export class LogInFormComponent implements OnInit {
   loginForm: FormGroup;
 
+constructor(private router: Router){}
 
   ngOnInit() {
+    this.initForm();
+  }
+  
+  initForm() {
     this.loginForm = new FormGroup({
       name: new FormControl(null, [Validators.required ]),
       email: new FormControl(null, [Validators.required, Validators.email ])
     });
   }
-
+  
   onSubmit(){
     console.log(this.loginForm);
+    this.router.navigateByUrl('dashboard');
   }
 
 }

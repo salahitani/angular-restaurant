@@ -8,6 +8,7 @@ import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { ClassBindingComponent } from './class-binding/class-binding.component';
 import { LogInFormComponent } from './log-in-form/log-in-form.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
 
 @NgModule({
   declarations: [
@@ -15,7 +16,8 @@ import { LogInFormComponent } from './log-in-form/log-in-form.component';
     HeaderComponent,
     FooterComponent,
     ClassBindingComponent,
-    LogInFormComponent
+    LogInFormComponent,
+    DashboardComponent
   ],
   imports: [
     BrowserModule,

@@ -10,7 +10,7 @@ import { Component, OnInit} from '@angular/core';
 export class AppComponent {
   title = 'cms';
  
-  //imageSrc = 'C:\Users\user\OneDrive\Desktop\Angular Sessions\Session1\cms\Images\Logo1.png'; 
+  imageSrc = 'src/assets/Images/Logo1.png'; 
   
  
 }
