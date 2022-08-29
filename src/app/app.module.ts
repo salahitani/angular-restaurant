@@ -8,7 +8,8 @@ import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { ClassBindingComponent } from './class-binding/class-binding.component';
 import { LogInFormComponent } from './log-in-form/log-in-form.component';
-import { DashboardComponent } from './dashboard/dashboard.component';
+import { RestaurantsComponent } from './restaurants/restaurants.component';
+import { CreateRestaurantComponent } from './create-restaurant/create-restaurant.component';
 
 @NgModule({
   declarations: [
@@ -17,12 +18,13 @@ import { DashboardComponent } from './dashboard/dashboard.component';
     FooterComponent,
     ClassBindingComponent,
     LogInFormComponent,
-    DashboardComponent
+    RestaurantsComponent,
+    CreateRestaurantComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
