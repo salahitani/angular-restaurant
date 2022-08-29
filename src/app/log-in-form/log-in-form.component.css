@@ -1,0 +1,15 @@
+#login-page {
+    height: 100vh;
+}
+
+.login-row {
+    height: 100%;
+}
+
+.logo {
+    width: 30%;
+    display: block;
+    margin: 50px auto;
+}
+
+
