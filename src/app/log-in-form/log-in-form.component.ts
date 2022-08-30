@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {FormGroup, FormControl, Validators } from '@angular/forms';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 
 
@@ -11,22 +11,33 @@ import { Router } from '@angular/router';
 export class LogInFormComponent implements OnInit {
   loginForm: FormGroup;
   
-constructor(private router: Router){}
+  constructor(private router: Router) {
+  }
 
   ngOnInit() {
     this.initForm();
   }
-  
+
   initForm() {
     this.loginForm = new FormGroup({
-      name: new FormControl(null, [Validators.required ]),
-      email: new FormControl(null, [Validators.required, Validators.email ])
+      name: new FormControl(null, [Validators.required]),
+      email: new FormControl(null, [Validators.required, Validators.email])
     });
   }
-  
-  onSubmit(){
-    console.log(this.loginForm);
-    this.router.navigateByUrl('dashboard');
+
+  onSubmit() {
+    console.log(this.email.errors);
+    // console.log(this.loginForm.get('name').);
+    // console.log(this.loginForm.get('name').errors);
+    // this.router.navigateByUrl('dashboard');
+  }
+
+  get name() {
+    return this.loginForm.get('name');
+  }
+
+  get email() {
+    return this.loginForm.get('email');
   }
 
 }

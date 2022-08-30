@@ -2,12 +2,21 @@
   <div class="login-row row align-items-center justify-content-md-center">
     <div class="col-md-4">
       <img class="logo" src="/assets/Images/Logo1.png" alt="logo">
-      <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+      <form [formGroup]="loginForm" #loginFormRef="ngForm" (ngSubmit)="onSubmit()">
         <div class="form-group">
           <label for="name" class="mb-2">Full Name: </label>
           <input placeholder="Name" type="text" id="name" formControlName="name" class="form-control mb-3" size="10">
+          <div *ngIf="name.invalid && loginFormRef.submitted" class="alert alert-danger" role="alert">
+            Name Field is Required
+          </div>
           <label for="email" class="mb-2">Email: </label>
           <input placeholder='Email' type="text" id="email" formControlName="email" class="form-control mb-3" />
+          <div *ngIf="email.hasError('required') && loginFormRef.submitted" class="alert alert-danger" role="alert">
+            Email Field is Required
+          </div>
+          <div *ngIf="email.hasError('email') && loginFormRef.submitted" class="alert alert-danger" role="alert">
+            Invalid email
+          </div>
         </div>
         <div class="d-grid col-12 mx-auto p-0">
           <button type="submit" class="btn btn-primary">Submit</button>
