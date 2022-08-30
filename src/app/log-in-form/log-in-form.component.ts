@@ -26,7 +26,7 @@ constructor(private router: Router){}
   
   onSubmit(){
     console.log(this.loginForm);
-    this.router.navigateByUrl('restaurants');
+    this.router.navigateByUrl('dashboard');
   }
 
 }

@@ -1,0 +1,15 @@
+#dashboardcontainer {
+    height: 100vh;
+}
+
+.header-row {
+    height:10%;
+}
+
+.content-row {
+    height: 80%;
+}
+
+.footer-row {
+    height: 10%;
+}
