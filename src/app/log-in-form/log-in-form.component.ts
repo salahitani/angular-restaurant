@@ -10,7 +10,7 @@ import { Router } from '@angular/router';
 })
 export class LogInFormComponent implements OnInit {
   loginForm: FormGroup;
-  
+
   constructor(private router: Router) {
   }
 
@@ -26,10 +26,13 @@ export class LogInFormComponent implements OnInit {
   }
 
   onSubmit() {
-    console.log(this.email.errors);
+    // console.log(this.email.errors);
     // console.log(this.loginForm.get('name').);
     // console.log(this.loginForm.get('name').errors);
-    // this.router.navigateByUrl('dashboard');
+    if (this.name.valid && this.email.valid) {
+      this.router.navigateByUrl('dashboard');
+    }
+
   }
 
   get name() {

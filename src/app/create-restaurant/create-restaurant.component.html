@@ -1,0 +1,48 @@
+<div id="createrestaurantcontainer" class="container mt-5">
+    <div class="login-row row align-items-center justify-content-md-center">
+        <div class="col-md-8">
+            <form [formGroup]="createrestaurantform" #creatrestformref="ngForm">
+                <div class="form-group">
+
+                    <label for="restname" class="mb-2">Restaurant Name: </label>
+                    <input placeholder="Restaurant Name..." type="text" id="restname" formControlName="restname"
+                        class="form-control mb-3" size="10">
+                    <div *ngIf="restname.hasError('required') && creatrestformref.submitted" class="alert alert-danger"
+                        role="alert">
+                        Restaurant Name Field is Required
+                    </div>
+
+
+
+
+                    <label for="restdescription" class="mb-2">Restaurant Description: </label>
+                    <textarea placeholder="Restaurant Description..." ng-model="myTextarea" type="text"
+                        id="restdescription" formControlName="restdescription" class="form-control mb-3"></textarea>
+
+
+                    <div *ngIf="restdescription.hasError('required') && creatrestformref.submitted"
+                        class="alert alert-danger" role="alert">
+                        Restaurant Description Field is Required
+                    </div>
+
+                    <label for="restlogo" class="mb-2">Restaurant Logo: </label>
+                    <input type="file" id="restFile" name="restlogo" formControlName="restlogo"
+                        class="form-control mb-3">
+                    <div *ngIf="restlogo.hasError('required') && creatrestformref.submitted" class="alert alert-danger"
+                        role="alert">
+                        Restaurant Logo Field is Required
+                    </div>
+
+
+                </div>
+
+
+
+
+                <div class="d-grid col-12 mx-auto p-0">
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

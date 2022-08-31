@@ -10,6 +10,11 @@ import { LogInFormComponent } from './log-in-form/log-in-form.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { RouterModule } from '@angular/router';
 import { RestaurantsComponent } from './restaurants/restaurants.component';
+import { CreateRestaurantComponent } from './create-restaurant/create-restaurant.component';
+import { HotelsComponent } from './hotels/hotels.component';
+import { CreateHotelsComponent } from './create-hotels/create-hotels.component';
+import { GuesthousesComponent } from './guesthouses/guesthouses.component';
+import { CreateGuesthouseComponent } from './create-guesthouse/create-guesthouse.component';
 
 
 @NgModule({
@@ -20,7 +25,12 @@ import { RestaurantsComponent } from './restaurants/restaurants.component';
     ClassBindingComponent,
     LogInFormComponent,
     DashboardComponent,
-    RestaurantsComponent, 
+    RestaurantsComponent,
+    CreateRestaurantComponent,
+    HotelsComponent,
+    CreateHotelsComponent,
+    GuesthousesComponent,
+    CreateGuesthouseComponent, 
   ],
   imports: [
     BrowserModule,

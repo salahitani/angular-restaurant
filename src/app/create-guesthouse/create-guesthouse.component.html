@@ -1,0 +1,44 @@
+<div id="createguesthousecontainer" class="container mt-5">
+    <div class="login-row row align-items-center justify-content-md-center">
+        <div class="col-md-8">
+            <form [formGroup]="createguesthouseform" #createguesthouseformref="ngForm">
+                <div class="form-group">
+
+                    <label for="guesthousename" class="mb-2">Guest-House Name: </label>
+                    <input placeholder="Guest-House Name..." type="text" id="guesthousename" formControlName="guesthousename"
+                        class="form-control mb-3" size="10">
+
+                    <div *ngIf="guesthousename.hasError('required') && createguesthouseformref.submitted" class="alert alert-danger"
+                        role="alert">
+                        Guest-House Name Field is Required
+                    </div>
+
+
+                    <label for="hoteldescription" class="mb-2">Guest-House Description: </label>
+                    <textarea placeholder="Guest-House Description..." ng-model="myTextarea" type="text"
+                        id="guesthousedescription" formControlName="guesthousedescription" class="form-control mb-3"></textarea>
+
+
+                    <div *ngIf="guesthousedescription.hasError('required') && createguesthouseformref.submitted"
+                        class="alert alert-danger" role="alert">
+                        Guest-House Description Field is Required
+                    </div>
+                </div>
+
+                
+                <label for="guesthouselogo" class="mb-2">Guest-House Logo: </label>
+                <input type="file" id="guesthouselogo" name="guesthouselogo" formControlName="guesthouselogo"
+                    class="form-control mb-3">
+                <div *ngIf="guesthouselogo.hasError('required') && createguesthouseformref.submitted" class="alert alert-danger"
+                    role="alert">
+                    Guest-House Logo Field is Required
+                </div>
+
+
+                <div class="d-grid col-12 mx-auto p-0">
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
