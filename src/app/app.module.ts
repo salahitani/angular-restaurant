@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import {  ReactiveFormsModule } from '@angular/forms';
+import {  FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
@@ -15,6 +15,7 @@ import { HotelsComponent } from './hotels/hotels.component';
 import { CreateHotelsComponent } from './create-hotels/create-hotels.component';
 import { GuesthousesComponent } from './guesthouses/guesthouses.component';
 import { CreateGuesthouseComponent } from './create-guesthouse/create-guesthouse.component';
+import { CreateFormComponent } from './create-form/create-form.component';
 
 
 @NgModule({
@@ -30,14 +31,15 @@ import { CreateGuesthouseComponent } from './create-guesthouse/create-guesthouse
     HotelsComponent,
     CreateHotelsComponent,
     GuesthousesComponent,
-    CreateGuesthouseComponent, 
+    CreateGuesthouseComponent,
+    CreateFormComponent, 
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    ReactiveFormsModule,
+    ReactiveFormsModule, // LOGIN
     RouterModule,
-    
+    FormsModule // Create
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -20,8 +20,8 @@ export class LogInFormComponent implements OnInit {
 
   initForm() {
     this.loginForm = new FormGroup({
-      name: new FormControl(null, [Validators.required]),
-      email: new FormControl(null, [Validators.required, Validators.email])
+      name: new FormControl('Khaled', [Validators.required]),
+      email: new FormControl('khaled@neo.ae', [Validators.required, Validators.email])
     });
   }
 
