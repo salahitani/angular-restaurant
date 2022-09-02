@@ -16,6 +16,8 @@ import { CreateHotelsComponent } from './create-hotels/create-hotels.component';
 import { GuesthousesComponent } from './guesthouses/guesthouses.component';
 import { CreateGuesthouseComponent } from './create-guesthouse/create-guesthouse.component';
 import { CreateFormComponent } from './create-form/create-form.component';
+import { NotFoundComponent } from './pages/not-found/not-found.component';
+import { CreatePageComponent } from './pages/create-page/create-page.component';
 
 
 @NgModule({
@@ -32,7 +34,9 @@ import { CreateFormComponent } from './create-form/create-form.component';
     CreateHotelsComponent,
     GuesthousesComponent,
     CreateGuesthouseComponent,
-    CreateFormComponent, 
+    CreateFormComponent,
+    NotFoundComponent,
+    CreatePageComponent
   ],
   imports: [
     BrowserModule,

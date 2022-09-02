@@ -11,5 +11,12 @@ import { Component, OnInit} from '@angular/core';
 export class AppComponent {
   title = 'cms';
  
+  get checkToken () {
+    const token = localStorage.getItem('token');
+    if(token) {
+      return true;
+    }
+    return false;
+  }
 
 }

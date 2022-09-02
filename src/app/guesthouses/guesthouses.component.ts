@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-guesthouses',
@@ -8,15 +8,15 @@ import { Router } from '@angular/router';
 })
 export class GuesthousesComponent implements OnInit {
 
-  constructor(private router: Router) {
+  constructor(private router: Router, private route: ActivatedRoute) {
   }
 
 
   ngOnInit(): void {
   }
 
-  onSubmit(){
-    this.router.navigateByUrl('dashboard/guesthouses/createguesthouse');
+  onCreate(){
+    this.router.navigate(['../create/guesthouse'], { relativeTo: this.route });
   }
 
 }

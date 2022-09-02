@@ -26,13 +26,17 @@ export class LogInFormComponent implements OnInit {
   }
 
   onSubmit() {
-    // console.log(this.email.errors);
-    // console.log(this.loginForm.get('name').);
-    // console.log(this.loginForm.get('name').errors);
-    if (this.name.valid && this.email.valid) {
+    if (this.loginForm.valid) {
+      // For later: when we implement the APIs request a token will be retreived and saved 
+      this.saveToken();
       this.router.navigateByUrl('dashboard');
     }
+  }
 
+  // For Later: It's better to be inside a util
+  // Note: random token: is retreived from the API request as a response.
+  saveToken() {
+    localStorage.setItem('token', 'random-token');
   }
 
   get name() {
