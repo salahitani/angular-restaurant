@@ -3,7 +3,7 @@
     <a class="navbar-brand" href="#">LOGOHERE</a>
     <ul class="nav nav-tabs">
       <li class="nav-item">
-        <a class="nav-link active" aria-current="page" href="#" [routerLink]="['dashboard/restaurants']" >Restaurants</a>
+        <a class="nav-link active" aria-current="page" href="#" [routerLink]="['dashboard/restaurants']">Restaurants</a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="#" [routerLink]="['dashboard/hotels']">Hotels</a>
@@ -11,10 +11,11 @@
       <li class="nav-item">
         <a class="nav-link" href="#" [routerLink]="['dashboard/guesthouses']">Guest Houses</a>
       </li>
-
-
-      <li class="nav-item">
-        <a class="nav-link" href="#" (click)="onLogout()">LogOut</a>
-      </li>
-      
     </ul>
+      
+    <span class="nav navbar-nav ms-auto">
+        <li>
+          <a class="nav-link" href="#" (click)="onLogout()">LogOut</a>
+        </li>
+      </span>
+   
