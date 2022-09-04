@@ -15,7 +15,7 @@
   </div>
 
   <label for="logo" class="mb-2">Logo: </label>
-  <input type="file" id="logo" name="logo" [(ngModel)]="logoz" class="form-control mb-3" #logo="ngModel" required />
+  <input type="file" accept=".jpg, .png, .jpeg, .gif, .bmp, .tif, .tiff|image/*" id="logo" name="logo" [(ngModel)]="logoz" class="form-control mb-3" #logo="ngModel" required />
   <div *ngIf="logo.invalid && logo.touched" class="alert alert-danger" role="alert">
     Logo Field is Required
   </div>
