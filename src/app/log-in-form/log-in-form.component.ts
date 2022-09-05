@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { AuthService } from '../services/auth.service';
 
 
 @Component({
@@ -11,7 +12,7 @@ import { Router } from '@angular/router';
 export class LogInFormComponent implements OnInit {
   loginForm: FormGroup;
 
-  constructor(private router: Router) {
+  constructor(private router: Router, private authSerice: AuthService) {
   }
 
   ngOnInit() {
@@ -20,31 +21,31 @@ export class LogInFormComponent implements OnInit {
 
   initForm() {
     this.loginForm = new FormGroup({
-      name: new FormControl('Khaled', [Validators.required]),
-      email: new FormControl('khaled@neo.ae', [Validators.required, Validators.email])
+      email: new FormControl('', [Validators.required, Validators.email]),
+      pass: new FormControl('', [Validators.required])
     });
   }
 
   onSubmit() {
     if (this.loginForm.valid) {
-      // For later: when we implement the APIs request a token will be retreived and saved 
-      this.saveToken();
-      this.router.navigateByUrl('dashboard');
+      this.authSerice.login(this.loginForm.get('email').value, this.loginForm.get('pass').value).subscribe((data: any) => {
+        this.saveToken(data.token);
+        this.router.navigateByUrl('dashboard');
+      });
     }
   }
 
   // For Later: It's better to be inside a util
-  // Note: random token: is retreived from the API request as a response.
-  saveToken() {
-    localStorage.setItem('token', 'random-token');
-  }
-
-  get name() {
-    return this.loginForm.get('name');
+  saveToken(token) {
+    localStorage.setItem('token', token);
   }
 
   get email() {
     return this.loginForm.get('email');
+  }
+
+  get pass () {
+    return this.loginForm.get('pass');
   }
 
 }

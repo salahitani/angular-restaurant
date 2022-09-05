@@ -18,7 +18,7 @@ import { CreateGuesthouseComponent } from './create-guesthouse/create-guesthouse
 import { CreateFormComponent } from './create-form/create-form.component';
 import { NotFoundComponent } from './pages/not-found/not-found.component';
 import { CreatePageComponent } from './pages/create-page/create-page.component';
-
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -43,7 +43,8 @@ import { CreatePageComponent } from './pages/create-page/create-page.component';
     AppRoutingModule,
     ReactiveFormsModule, // LOGIN
     RouterModule,
-    FormsModule // Create
+    FormsModule, // Create
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
