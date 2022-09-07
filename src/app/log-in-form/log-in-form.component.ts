@@ -28,7 +28,8 @@ export class LogInFormComponent implements OnInit {
 
   onSubmit() {
     if (this.loginForm.valid) {
-      this.authSerice.login(this.loginForm.get('email').value, this.loginForm.get('pass').value).subscribe((data: any) => {
+      const authObservable = this.authSerice.login(this.loginForm.get('email').value, this.loginForm.get('pass').value);
+      authObservable.subscribe((data: any) => {
         this.saveToken(data.token);
         this.router.navigateByUrl('dashboard');
       });
@@ -44,7 +45,7 @@ export class LogInFormComponent implements OnInit {
     return this.loginForm.get('email');
   }
 
-  get pass () {
+  get pass() {
     return this.loginForm.get('pass');
   }
 
