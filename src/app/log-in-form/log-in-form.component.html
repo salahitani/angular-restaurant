@@ -4,22 +4,23 @@
       <img class="logo" src="/assets/Images/Logo1.png" alt="logo">
       <form [formGroup]="loginForm" #loginFormRef="ngForm" (ngSubmit)="onSubmit()">
         <div class="form-group">
-          <label for="email" class="mb-2">Email: </label>
-          <input placeholder='Email' type="text" id="email" formControlName="email" class="form-control mb-3" />
-          <div *ngIf="email.hasError('required') && loginFormRef.submitted" class="alert alert-danger" role="alert">
+          <label for="username" class="mb-2">Username: </label>
+          <input placeholder='Username...' type="text" id="username" formControlName="username" class="form-control mb-3" />
+          <div *ngIf="username.hasError('required') && loginFormRef.submitted" class="alert alert-danger" role="alert">
             Email Field is Required
           </div>
-          <div *ngIf="email.hasError('email') && loginFormRef.submitted" class="alert alert-danger" role="alert">
-            Invalid email
-          </div>
           <label for="password" class="mb-2">Password: </label>
-          <input placeholder='Password' type="password" id="password" formControlName="pass" class="form-control mb-3" />
+          <input placeholder='Password...' type="password" id="password" formControlName="pass"
+            class="form-control mb-3" />
           <div *ngIf="pass.invalid && loginFormRef.submitted" class="alert alert-danger" role="alert">
             Password Field is Required
           </div>
         </div>
+        <div class="d-grid col-12 mx-auto p-0 mb-2">
+          <button type="submit" class="btn btn-primary">Submit</button>
+        </div>
         <div class="d-grid col-12 mx-auto p-0">
-          <button type="submit" class="btn btn-primary" >Submit</button>
+          <button type="submit" class="btn btn-primary" (click)="onRegister()">Register</button>
         </div>
       </form>
     </div>

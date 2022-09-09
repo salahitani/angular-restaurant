@@ -8,12 +8,25 @@ export class AuthService {
 
   constructor(private httpClient: HttpClient) { }
 
-  login(email, password) {
+  login(username, password) {
     const body = {
-      "email": email,
+      "username": username,
       "password": password
     };
-    return this.httpClient.post('http://localhost:7777/api/v1/auth/login', body);
+    return this.httpClient.post('https://foodbukka.herokuapp.com/api/v1/auth/login', body);
+  }
+
+
+  register(username, password, phonenumber, email) {
+    const body = {
+      "username": username,
+      "password": password,
+      "phoneNumber": phonenumber,
+      "email": email
+    };
+    console.log("Registration Done");
+    return this.httpClient.post('https://foodbukka.herokuapp.com/api/v1/auth/register', body);
+    
   }
 
 }

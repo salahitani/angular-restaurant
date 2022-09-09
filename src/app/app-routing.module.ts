@@ -9,11 +9,13 @@ import { LogInFormComponent } from './log-in-form/log-in-form.component';
 import { LoginGuardGuard } from './login-guard.guard';
 import { RestaurantsComponent } from './restaurants/restaurants.component';
 import { CreatePageComponent } from './pages/create-page/create-page.component';
+import { RegisterFormComponent } from './register-form/register-form.component';
 
 
 const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
   { path: 'login', component: LogInFormComponent, canActivate: [LoginGuardGuard] },
+  { path: 'register', component: RegisterFormComponent},
   {
     title: 'Dashboard', path: 'dashboard', canActivate: [DashboardAccessGuard], component: DashboardComponent, children: [{
       path: 'restaurants', component: RestaurantsComponent,

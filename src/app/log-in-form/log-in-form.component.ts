@@ -21,14 +21,14 @@ export class LogInFormComponent implements OnInit {
 
   initForm() {
     this.loginForm = new FormGroup({
-      email: new FormControl('', [Validators.required, Validators.email]),
+      username: new FormControl('', [Validators.required]),
       pass: new FormControl('', [Validators.required])
     });
   }
 
   onSubmit() {
     if (this.loginForm.valid) {
-      const authObservable = this.authSerice.login(this.loginForm.get('email').value, this.loginForm.get('pass').value);
+      const authObservable = this.authSerice.login(this.loginForm.get('username').value, this.loginForm.get('pass').value);
       authObservable.subscribe((data: any) => {
         this.saveToken(data.token);
         this.router.navigateByUrl('dashboard/restaurants');
@@ -41,12 +41,17 @@ export class LogInFormComponent implements OnInit {
     localStorage.setItem('token', token);
   }
 
-  get email() {
-    return this.loginForm.get('email');
+  get username() {
+    return this.loginForm.get('username');
   }
 
   get pass() {
     return this.loginForm.get('pass');
+  }
+
+  onRegister()
+  {
+    this.router.navigateByUrl('register');
   }
 
 }
