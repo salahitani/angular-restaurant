@@ -10,7 +10,8 @@ import { RestService } from '../services/rest.service';
 export class RestaurantsComponent implements OnInit {
 
   restaurants: any = [];
-  
+  totalRestaurant: Number = 0;
+
   constructor(private router: Router, private route: ActivatedRoute, private restaurantService: RestService) {
   }
 
@@ -20,16 +21,16 @@ export class RestaurantsComponent implements OnInit {
 
   fetchAllRestaurant() {
     this.restaurantService.getAllRestaurants()
-    .subscribe((response: any) => {
-      
-      // const restaurantsResult = response.Result.map(restaurant => {
-      //   return {
-      //     ...restaurant,
-      //     businessname: restaurant.businessname.charAt(0).toUpperCase() + restaurant.businessname.slice(1)
-      //   }
-      // })
-      this.restaurants = response.Result;
-    });
+      .subscribe((response: any) => {
+        this.totalRestaurant = response['Total Restaurants'];
+        // this.restaurants = response['Result'].map(restaurant =>
+        // ({
+        //   ...restaurant,
+        //   businessname: restaurant.businessname.charAt(0).toUpperCase() + restaurant.businessname.slice(1)
+        // })
+        // )
+        this.restaurants = response.Result;
+      });
   };
 
   onCreate() {
