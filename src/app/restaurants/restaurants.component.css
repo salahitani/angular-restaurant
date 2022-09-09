@@ -1,3 +1,5 @@
-/* #restaurantcontainer {
-    height: 100vh;
-} */
+.list-group-item:hover  {
+    background-color: #afc4eb;
+    color: black;
+;
+}

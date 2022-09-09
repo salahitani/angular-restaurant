@@ -5,3 +5,8 @@
     overflow: hidden;
     margin-top: -6px;
 }
+
+.navbar-light .navbar-nav .nav-link {
+    color: rgb(247 0 0 / 50%);
+    font-weight: bold;
+}

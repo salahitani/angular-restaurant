@@ -1,6 +1,6 @@
 <div id="restaurantcontainer" class="container mt-5">
-    <div class="row mb-5">
-        <div class="col-12 align-content-end">
+    <div class="row mb-5 ">
+        <div class="col-12 d-flex flex-row-reverse">
             <button type="submit" class="btn btn-primary" (click)="onCreate()">Create</button>
         </div>
     </div>
@@ -8,8 +8,10 @@
 
 
     <div class="row">
-        <div *ngFor="let restaurant of restaurants" class="list-group">
-            <a href="#" class="list-group-item list-group-item-action">{{restaurant.businessname | titlecase}}</a>
+        <div class="col-4">
+            <div *ngFor="let restaurant of restaurants" class="list-group">
+                <a href="#" class="list-group-item list-group-item-action list-group-item:hover">{{restaurant.businessname | titlecase}}</a>
+            </div>
         </div>
     </div>
 </div>
