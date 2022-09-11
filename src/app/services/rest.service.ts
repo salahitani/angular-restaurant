@@ -20,13 +20,16 @@ export class RestService {
 
   };
 
-  postARestaurant(restaurant:{
-    name: String,
-    address: String,
-    restaurantType: String // ENUMS for later
-  }) {
+  postARestaurant(name,address,type)
+  {
+    const body =   {
+      "businessName": name,
+      "address": address,
+      "restaurantType": type
+    }
+    return this.httpClient.post(`${this.baseURL}restaurant`, body);
+  }
 
-  };  
 
   updateARestaurant(id: String, updatedFields: any) {
 

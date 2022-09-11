@@ -12,7 +12,7 @@ import { AuthService } from '../services/auth.service';
 export class LogInFormComponent implements OnInit {
   loginForm: FormGroup;
 
-  constructor(private router: Router, private authSerice: AuthService) {
+  constructor(private router: Router, private authService: AuthService) {
   }
 
   ngOnInit() {
@@ -28,7 +28,7 @@ export class LogInFormComponent implements OnInit {
 
   onSubmit() {
     if (this.loginForm.valid) {
-      const authObservable = this.authSerice.login(this.loginForm.get('username').value, this.loginForm.get('pass').value);
+      const authObservable = this.authService.login(this.loginForm.get('username').value, this.loginForm.get('pass').value);
       authObservable.subscribe((data: any) => {
         this.saveToken(data.token);
         this.router.navigateByUrl('dashboard/restaurants');
