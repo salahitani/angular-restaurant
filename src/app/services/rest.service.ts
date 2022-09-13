@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
 @Injectable({
@@ -26,8 +26,13 @@ export class RestService {
       "businessName": name,
       "address": address,
       "restaurantType": type
+    };
+    
+    const headers = {
+      'Authorization': `Bearer ${localStorage.getItem('token')}`,
     }
-    return this.httpClient.post(`${this.baseURL}restaurant`, body);
+    
+    return this.httpClient.post(`${this.baseURL}restaurant`, body, { headers });
   }
 
 
