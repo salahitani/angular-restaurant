@@ -1,23 +1,23 @@
 <div id="restaurantcontainer" class="container mt-5">
     <div class="row mb-5 ">
-        <form class="form-inline my-2 my-lg-0">
-            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-
-            <div class=" d-inline col d-flex flex-row-reverse">
-                <button type="submit" class="btn btn-primary" (click)="onCreate()">Create</button>
-            </div>
-        </form>
+        <!-- <form class="form-inline my-2 my-lg-0"> -->
+        <input [(ngModel)]="searchValue" class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+        <!-- <button class="btn btn-outline-success my-2 my-sm-0" type="submit" (click)="onSearch()">Search</button> -->
+        <!-- </form> -->
+        <div class=" d-inline col d-flex flex-row-reverse">
+            <button class="btn btn-primary" (click)="onCreate()">Create</button>
+        </div>
     </div>
 
 
 
-    <div *ngFor="let restaurant of restaurants" class="list-group">
+    <div *ngFor="let restaurant of restaurants | search:searchValue" class="list-group">
         <div class="card mb-5" style="width: 18rem;">
             <img class="card-img-top" [src]="restaurant.image" alt="Card image cap">
             <div class="card-body">
                 <h5 class="card-title">{{restaurant.businessname | titlecase}}</h5>
                 <p class="card-text">{{restaurant.restauranttype}}</p>
+                <p class="card-text">{{'2022-9-13' | date:'short' }}</p>
                 <a href="#" class="btn btn-primary" routerLink="/restaurant/{{restaurant.id}}">Open Restaurant</a>
             </div>
         </div>

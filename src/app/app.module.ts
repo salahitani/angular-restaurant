@@ -21,6 +21,7 @@ import { CreatePageComponent } from './pages/create-page/create-page.component';
 import { HttpClientModule } from '@angular/common/http';
 import { RegisterFormComponent } from './register-form/register-form.component';
 import { ShowRestaurantComponent } from './show-restaurant/show-restaurant.component';
+import { SearchPipe } from './pipes/search.pipe';
 
 @NgModule({
   declarations: [
@@ -40,7 +41,8 @@ import { ShowRestaurantComponent } from './show-restaurant/show-restaurant.compo
     NotFoundComponent,
     CreatePageComponent,
     RegisterFormComponent,
-    ShowRestaurantComponent
+    ShowRestaurantComponent,
+    SearchPipe
   ],
   imports: [
     BrowserModule,

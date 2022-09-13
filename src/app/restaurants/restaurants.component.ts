@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { map } from 'rxjs';
 import { RestService } from '../services/rest.service';
 
 @Component({
@@ -11,6 +12,7 @@ export class RestaurantsComponent implements OnInit {
 
   restaurants: any = [];
   totalRestaurant: Number = 0;
+  searchValue: string = '';
 
   constructor(private router: Router, private route: ActivatedRoute, private restaurantService: RestService) {
   }
@@ -22,18 +24,23 @@ export class RestaurantsComponent implements OnInit {
   fetchAllRestaurant() {
     this.restaurantService.getAllRestaurants()
     .subscribe((response: any) => {
-      
-      // const restaurantsResult = response.Result.map(restaurant => {
-      //   return {
-      //     ...restaurant,
-      //     businessname: restaurant.businessname.charAt(0).toUpperCase() + restaurant.businessname.slice(1)
-      //   }
-      // })
       this.restaurants = response.Result;
+      this.totalRestaurant = response['Total Restaurants'];
     });
   };
 
   onCreate() {
     this.router.navigate(['../create/restaurant'], { relativeTo: this.route });
   }
+
+  // REFERENCE
+  // onSearch() {
+  //   this.restaurants = this.restaurants.filter(restaurant => {
+  //     if(restaurant.businessname.toLocaleLowerCase().includes(this.searchValue.toLocaleLowerCase())) {
+  //       return restaurant;
+  //     }
+  //   });
+  //   this.totalRestaurant = this.restaurants.length;
+  // }
+
 }
