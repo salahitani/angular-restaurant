@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, NgZone, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from '../services/auth.service';
@@ -11,8 +11,9 @@ import { AuthService } from '../services/auth.service';
 })
 export class LogInFormComponent implements OnInit {
   loginForm: FormGroup;
+  isLoading: Boolean = false;
 
-  constructor(private router: Router, private authService: AuthService) {
+  constructor(private router: Router, private authService: AuthService, private ngZone: NgZone) {
   }
 
   ngOnInit() {
@@ -28,11 +29,20 @@ export class LogInFormComponent implements OnInit {
 
   onSubmit() {
     if (this.loginForm.valid) {
+      this.isLoading = true;
       const authObservable = this.authService.login(this.loginForm.get('username').value, this.loginForm.get('pass').value);
       authObservable.subscribe((data: any) => {
         this.saveToken(data.token);
         this.router.navigateByUrl('dashboard/restaurants');
       });
+      // authObservable.subscribe({
+      //   next(data: any) {
+      //   }, error(exception) {
+      //     this.isLoading = false;
+      //   }, complete() {
+      //     this.isLoading = false;
+      //   }
+      // });
     }
   }
 
@@ -49,8 +59,7 @@ export class LogInFormComponent implements OnInit {
     return this.loginForm.get('pass');
   }
 
-  onRegister()
-  {
+  onRegister() {
     this.router.navigateByUrl('register');
   }
 

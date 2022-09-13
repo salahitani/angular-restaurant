@@ -15,10 +15,11 @@ import { ShowRestaurantComponent } from './show-restaurant/show-restaurant.compo
 
 const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
+  { path: 'dashboard', redirectTo: 'dashboard/restaurants', pathMatch: 'full' },
   { path: 'login', component: LogInFormComponent, canActivate: [LoginGuardGuard] },
   { path: 'register', component: RegisterFormComponent},
   {
-    title: 'Dashboard', path: 'dashboard', canActivate: [DashboardAccessGuard], component: DashboardComponent, children: [{
+    title: 'Dashboard', path: 'dashboard', canActivate: [DashboardAccessGuard] ,component: DashboardComponent, children: [{
       path: 'restaurants', component: RestaurantsComponent,
     }, {
       path: 'hotels', component: HotelsComponent
