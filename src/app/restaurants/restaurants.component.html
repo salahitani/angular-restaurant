@@ -1,7 +1,7 @@
 <div id="restaurantcontainer" class="container mt-5">
     <div class="row mb-5 ">
         <!-- <form class="form-inline my-2 my-lg-0"> -->
-        <input [(ngModel)]="searchValue" class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+        <input [(ngModel)]="searchValue" class="form-control mr-sm-2" type="search" placeholder="Search..." aria-label="Search">
         <!-- <button class="btn btn-outline-success my-2 my-sm-0" type="submit" (click)="onSearch()">Search</button> -->
         <!-- </form> -->
         <div class=" d-inline col d-flex flex-row-reverse">
@@ -18,7 +18,7 @@
                 <h5 class="card-title">{{restaurant.businessname | titlecase}}</h5>
                 <p class="card-text">{{restaurant.restauranttype}}</p>
                 <p class="card-text">{{'2022-9-13' | date:'short' }}</p>
-                <a href="#" class="btn btn-primary" routerLink="/restaurant/{{restaurant.id}}">Open Restaurant</a>
+                <a href="#" class="btn btn-primary" routerLink="../restaurant/{{restaurant.id}}">Open Restaurant</a>
             </div>
         </div>
     </div>

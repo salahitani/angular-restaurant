@@ -17,6 +17,8 @@ export class RestService {
   };
 
   getARestaurant(id: string) {
+    const observable = this.httpClient.get(`${this.baseURL}restaurant'${id}`);
+    return observable;
 
   };
 
