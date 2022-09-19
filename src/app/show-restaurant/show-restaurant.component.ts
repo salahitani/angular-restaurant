@@ -12,7 +12,6 @@ export class ShowRestaurantComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
-    private router: Router,
     private restaurantService: RestService) { }
 
   id: number;
