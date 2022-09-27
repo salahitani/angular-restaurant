@@ -19,6 +19,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { RegisterFormComponent } from './register-form/register-form.component';
 import { ShowRestaurantComponent } from './show-restaurant/show-restaurant.component';
 import { SearchPipe } from './pipes/search.pipe';
+import { CardComponent } from './components/card/card.component';
+import { ZoomInDirective } from './directives/zoom-in.directive';
 
 @NgModule({
   declarations: [
@@ -36,7 +38,9 @@ import { SearchPipe } from './pipes/search.pipe';
     CreatePageComponent,
     RegisterFormComponent,
     ShowRestaurantComponent,
-    SearchPipe
+    SearchPipe,
+    CardComponent,
+    ZoomInDirective
   ],
   imports: [
     BrowserModule,

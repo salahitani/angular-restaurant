@@ -1,0 +1,12 @@
+<div class="card">
+    <!-- <img class="card-img-top" [src]="image" alt="Card image cap"> -->
+    <div appZoomIn class="card-img-top" [ngStyle]="{'background-image': 'url('+ image + ')'}">
+
+    </div>
+    <div class="card-body">
+        <h5 class="card-title">{{name}}</h5>
+        <p class="card-text">{{type}}</p>
+        <p class="card-text">{{'2022-9-13' | date:'short' }}</p>
+        <button class="btn btn-primary" (click)="onActionButtonClick()">Open</button>
+    </div>
+</div>

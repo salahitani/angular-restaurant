@@ -32,8 +32,11 @@ export class LogInFormComponent implements OnInit {
       this.isLoading = true;
       const authObservable = this.authService.login(this.loginForm.get('username').value, this.loginForm.get('pass').value);
       authObservable.subscribe((data: any) => {
+        this.isLoading = false;
         this.saveToken(data.token);
         this.router.navigateByUrl('dashboard/restaurants');
+      }, () => {
+        this.isLoading = false;
       });
       // authObservable.subscribe({
       //   next(data: any) {

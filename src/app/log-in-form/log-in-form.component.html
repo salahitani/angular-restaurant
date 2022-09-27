@@ -22,11 +22,11 @@
         </div>
         
         <div class="d-grid col-12 mx-auto p-0 mb-2">
-          <button type="submit" class="btn btn-primary">Submit</button>
+          <button [disabled]="isLoading" type="submit" class="btn btn-primary">Submit</button>
         </div>
         
         <div class="d-grid col-12 mx-auto p-0">
-          <button type="submit" class="btn btn-primary" (click)="onRegister()">Register</button>
+          <button [disabled]="isLoading" type="submit" class="btn btn-primary" (click)="onRegister()">Register</button>
         </div>
       </form>
 

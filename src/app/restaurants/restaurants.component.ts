@@ -33,6 +33,10 @@ export class RestaurantsComponent implements OnInit {
     this.router.navigate(['../create/restaurant'], { relativeTo: this.route });
   }
 
+  onOpenRestaurant(id: string) {
+    this.router.navigate([`../restaurant/${id}`], { relativeTo: this.route });
+  };
+
   // REFERENCE
   // onSearch() {
   //   this.restaurants = this.restaurants.filter(restaurant => {
