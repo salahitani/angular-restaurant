@@ -9,9 +9,7 @@
             <button class="btn btn-primary" (click)="onCreate()">Create</button>
         </div>
     </div>
-
-
-
+    
     <div class="row">
         <div class="col-md-4 mb-4" *ngFor="let restaurant of restaurants | search:searchValue">
             <app-card (buttonEmitter)="onOpenRestaurant($event)" [id]="restaurant.id" [image]="restaurant.image"

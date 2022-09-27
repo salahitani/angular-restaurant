@@ -13,7 +13,6 @@ export class CardComponent implements OnInit {
   @Input() type: string = '';
   @Output() buttonEmitter = new EventEmitter<string>();
 
-  
   constructor() { }
   
   ngOnInit(): void {
@@ -24,7 +23,7 @@ export class CardComponent implements OnInit {
   }
 
   ngOnDestroy() {
-    
+
   }
 
   onActionButtonClick = () => {
