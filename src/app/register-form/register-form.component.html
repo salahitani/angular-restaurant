@@ -1,47 +1,60 @@
 <div id="register-page" class="container">
     <div class="register-row row align-items-center justify-content-md-center mt-3">
         <div class="col-md-7">
-            <form [formGroup]="registerForm" #registerFormRef="ngForm" (ngSubmit)="onSubmit()" >
+            <form [formGroup]="registerForm" #registerFormRef="ngForm" (ngSubmit)="onSubmit()">
                 <div class="form-group ,">
 
-                    <label for="username" class="mb-2">Username: </label>
-                    <input placeholder='Username...' type="text" id="username" formControlName="username"
+                    <label for="firstName" class="mb-2">First Name: </label>
+                    <input placeholder='First Name...' type="text" id="firstName" formControlName="firstName"
                         class="form-control mb-3" />
-                    <div *ngIf="username.hasError('required') && registerFormRef.submitted" class="alert alert-danger"
+                    <div *ngIf="firstName.hasError('required') && registerFormRef.submitted" class="alert alert-danger"
                         role="alert">
-                        Username Field is Required
+                        First Name Field is Required
                     </div>
 
 
-                    <label for="pass" class="mb-2">Password: </label>
-                    <input placeholder='Password...' type="password" id="pass" formControlName="pass"
+                    <label for="lastName" class="mb-2">Last Name: </label>
+                    <input placeholder='Last Name...' type="text" id="pass" formControlName="lastName"
                         class="form-control mb-3" />
-                    <div *ngIf="pass.invalid && registerFormRef.submitted" class="alert alert-danger" role="alert">
-                        Password Field is Required
-                    </div>
-
-                    <label for="phonenumber" class="mb-2">Phone Number: </label>
-                    <input placeholder='Phone Number...' type="text" id="phonenumber" formControlName="phonenumber"
-                        class="form-control mb-3" />
-                    <div *ngIf="phonenumber.invalid && registerFormRef.submitted" class="alert alert-danger" role="alert">
-                        Phone Number Field is Required
+                    <div *ngIf="lastName.invalid && registerFormRef.submitted" class="alert alert-danger" role="alert">
+                        Last Name Field is Required
                     </div>
 
                     <label for="email" class="mb-2">Email: </label>
                     <input placeholder='Email...' type="text" id="email" formControlName="email"
                         class="form-control mb-3" />
-                        <div *ngIf="email.invalid && registerFormRef.submitted" class="alert alert-danger" role="alert">
-                            Invalid Email
-                        </div>
-                    <div *ngIf="email.hasError('required') && registerFormRef.submitted" class="alert alert-danger" role="alert">
+                    <div *ngIf="email.invalid && registerFormRef.submitted" class="alert alert-danger" role="alert">
+                        Invalid Email
+                    </div>
+                    <div *ngIf="email.hasError('required') && registerFormRef.submitted" class="alert alert-danger"
+                        role="alert">
                         Email Field is Required
                     </div>
 
-                   
+                    <label for="password" class="mb-2">Password: </label>
+                    <input placeholder='Password...' type="password" id="password" formControlName="password"
+                        class="form-control mb-3" />
+                    <div *ngIf="password.invalid && registerFormRef.submitted" class="alert alert-danger" role="alert">
+                        Password Field is Required
+                    </div>
+
+                    <label for="confirmPassword" class="mb-2">Confirm Password: </label>
+                    <input placeholder='Confirm Password...' type="password" id="confirmPassword"
+                        formControlName="confirmPassword" class="form-control mb-3" />
+                    <div *ngIf="confirmPassword.invalid && registerFormRef.submitted" class="alert alert-danger"
+                        role="alert">
+                        Confirm Password Field is Required
+                    </div>
+
+                    <div *ngIf="password != confirmPassword" class="alert alert-danger"
+                        role="alert">
+                        Confirm Password Field do not match the password !
+                    </div>
+
 
                     <div class="d-grid col-12 mx-auto p-0 mb-2">
                         <button type="submit" class="btn btn-primary">Register</button>
-                      </div>
+                    </div>
 
 
                 </div>

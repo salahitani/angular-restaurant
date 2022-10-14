@@ -21,9 +21,9 @@ export class ShowRestaurantComponent implements OnInit {
 
     this.route.params
       .subscribe(
-        (params: Params) => {
-          this.id = params['restaurantID'];
-          console.log(params) //log the entire params object
+        (data: Params) => {
+          this.id = data['restaurantID'];
+          console.log(data) //log the entire params object
           console.log(this.id) //log the value of id
           this.fetchRestaurant(this.id);
         }

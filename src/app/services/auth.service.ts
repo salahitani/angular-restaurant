@@ -17,15 +17,17 @@ export class AuthService {
   }
 
 
-  register(username, password, phonenumber, email) {
+  register(firstName,lastName, password, confirmPassword, email) {
     const body = {
-      "username": username,
+      "firstName": firstName,
+      "lastName": lastName,
+      "email": email,
       "password": password,
-      "phoneNumber": phonenumber,
-      "email": email
+      "confirmPassword": confirmPassword      
     };
+    console.log(body);
     console.log("Registration Done");
-    return this.httpClient.post('https://foodbukka.herokuapp.com/api/v1/auth/register', body);
+    return this.httpClient.post('http://localhost:8080/register', body);
     
   }
 
