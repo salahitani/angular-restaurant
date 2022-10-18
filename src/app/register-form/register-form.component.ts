@@ -30,7 +30,8 @@ export class RegisterFormComponent implements OnInit {
 
     onSubmit() {
       if (this.registerForm.valid) {
-        const authObservable = this.authSerice.register(this.registerForm.get('firstName').value, this.registerForm.get('lastName').value, this.registerForm.get('email').value, this.registerForm.get('password').value,this.registerForm.get('confirmPassword').value);
+        const registrationData = this.registerForm.value;
+        const authObservable = this.authSerice.register(registrationData);
         authObservable.subscribe((data: any) => {
           this.saveToken(data.token);
           this.router.navigateByUrl('dashboard/restaurants');

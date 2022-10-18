@@ -16,19 +16,16 @@ export class AuthService {
     return this.httpClient.post('https://foodbukka.herokuapp.com/api/v1/auth/login', body);
   }
 
-
-  register(firstName,lastName, password, confirmPassword, email) {
-    const body = {
-      "firstName": firstName,
-      "lastName": lastName,
-      "email": email,
-      "password": password,
-      "confirmPassword": confirmPassword      
-    };
-    console.log(body);
-    console.log("Registration Done");
-    return this.httpClient.post('http://localhost:8080/register', body);
-    
-  }
-
+  // register(data) {
+  //   return this.httpClient.post('http://localhost:8080/register', data) 
+  // }
+  
+  // EQUAL to the above
+  // register = (data) => {
+  //   return this.httpClient.post('http://localhost:8080/register', data)
+  // };
+  
+  // EQUAL to the above. everything after the arrow will be returned directly
+  register = (data) => this.httpClient.post('http://localhost:8080/register', data);
 }
+  
