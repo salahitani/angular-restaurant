@@ -8,12 +8,12 @@ export class AuthService {
 
   constructor(private httpClient: HttpClient) { }
 
-  login(username, password) {
+  login(email, password) {
     const body = {
-      "username": username,
+      "email": email,
       "password": password
     };
-    return this.httpClient.post('https://foodbukka.herokuapp.com/api/v1/auth/login', body);
+    return this.httpClient.post('http://localhost:8080/v1/api/auth/login', body);
   }
 
   // register(data) {
@@ -26,6 +26,6 @@ export class AuthService {
   // };
   
   // EQUAL to the above. everything after the arrow will be returned directly
-  register = (data) => this.httpClient.post('http://localhost:8080/register', data);
+  register = (data) => this.httpClient.post('http://localhost:8080/v1/api/auth/register', data);
 }
   

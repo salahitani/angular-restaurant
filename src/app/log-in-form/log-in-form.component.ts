@@ -22,15 +22,15 @@ export class LogInFormComponent implements OnInit {
 
   initForm() {
     this.loginForm = new FormGroup({
-      username: new FormControl('', [Validators.required]),
-      pass: new FormControl('', [Validators.required])
+      email: new FormControl('', [Validators.required, Validators.email]),
+      password: new FormControl('', [Validators.required])
     });
   }
 
   onSubmit() {
     if (this.loginForm.valid) {
       this.isLoading = true;
-      const authObservable = this.authService.login(this.loginForm.get('username').value, this.loginForm.get('pass').value);
+      const authObservable = this.authService.login(this.loginForm.get('email').value, this.loginForm.get('password').value);
       authObservable.subscribe((data: any) => {
         this.isLoading = false;
         this.saveToken(data.token);
@@ -54,12 +54,12 @@ export class LogInFormComponent implements OnInit {
     localStorage.setItem('token', token);
   }
 
-  get username() {
-    return this.loginForm.get('username');
+  get email() {
+    return this.loginForm.get('email');
   }
 
-  get pass() {
-    return this.loginForm.get('pass');
+  get password() {
+    return this.loginForm.get('password');
   }
 
   onRegister() {
