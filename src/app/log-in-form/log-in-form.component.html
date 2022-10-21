@@ -2,34 +2,33 @@
   <div class="login-row row align-items-center justify-content-md-center">
     <div class="col-md-4">
       <img class="logo" src="/assets/Images/Logo1.png" alt="logo">
-      
-    <form [formGroup]="loginForm" #loginFormRef="ngForm" (ngSubmit)="onSubmit()">
+      <form [formGroup]="loginForm" #loginFormRef="ngForm" (ngSubmit)="onSubmit()">
         <div class="form-group">
-          
           <label for="email" class="mb-2">Email: </label>
           <input placeholder='Email...' type="email" id="email" formControlName="email" class="form-control mb-3" />
           <div *ngIf="email.hasError('required') && loginFormRef.submitted" class="alert alert-danger" role="alert">
             Email Field is Required
           </div>
-         
+          <div *ngIf="email.invalid && !email.hasError('required') && loginFormRef.submitted" class="alert alert-danger" role="alert">
+            Wrong Email Format
+          </div>
           <label for="password" class="mb-2">Password: </label>
           <input placeholder='Password...' type="password" id="password" formControlName="password"
             class="form-control mb-3" />
           <div *ngIf="password.invalid && loginFormRef.submitted" class="alert alert-danger" role="alert">
             Password Field is Required
           </div>
-       
         </div>
-        
         <div class="d-grid col-12 mx-auto p-0 mb-2">
           <button [disabled]="isLoading" type="submit" class="btn btn-primary">Submit</button>
         </div>
-        
-        <div class="d-grid col-12 mx-auto p-0">
+        <div class="d-grid col-12 mx-auto p-0 mb-2">
           <button [disabled]="isLoading" type="submit" class="btn btn-primary" (click)="onRegister()">Register</button>
         </div>
+        <div *ngIf="loginErrorMessage" class="alert alert-danger" role="alert">
+          {{loginErrorMessage}} 
+        </div>
       </form>
-
     </div>
   </div>
 </div>

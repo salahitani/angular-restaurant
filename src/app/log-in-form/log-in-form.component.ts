@@ -12,6 +12,7 @@ import { AuthService } from '../services/auth.service';
 export class LogInFormComponent implements OnInit {
   loginForm: FormGroup;
   isLoading: Boolean = false;
+  loginErrorMessage: string = '';
 
   constructor(private router: Router, private authService: AuthService, private ngZone: NgZone) {
   }
@@ -30,13 +31,16 @@ export class LogInFormComponent implements OnInit {
   onSubmit() {
     if (this.loginForm.valid) {
       this.isLoading = true;
-      const authObservable = this.authService.login(this.loginForm.get('email').value, this.loginForm.get('password').value);
+      const email = this.loginForm.get('email').value;
+      const password = this.loginForm.get('password').value;
+      const authObservable = this.authService.login(email, password);
       authObservable.subscribe((data: any) => {
         this.isLoading = false;
         this.saveToken(data.token);
         this.router.navigateByUrl('dashboard/restaurants');
-      }, () => {
+      }, (exception) => {
         this.isLoading = false;
+        this.loginErrorMessage = exception.error.error;
       });
       // authObservable.subscribe({
       //   next(data: any) {
