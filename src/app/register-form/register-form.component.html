@@ -23,13 +23,26 @@
                     <label for="email" class="mb-2">Email: </label>
                     <input placeholder='Email...' type="email" id="email" formControlName="email"
                         class="form-control mb-3" />
-                    <div *ngIf="email.invalid && registerFormRef.submitted" class="alert alert-danger" role="alert">
-                        Invalid Email
-                    </div>
-                    <div *ngIf="email.hasError('required') && registerFormRef.submitted" class="alert alert-danger"
-                        role="alert">
-                        Email Field is Required
-                    </div>
+
+
+                    <ng-container
+                        *ngIf="email.hasError('required') && registerFormRef.submitted;  then emailRequiredMessage; else invalidEmailMessage ">
+                    </ng-container>
+
+                    <ng-template #emailRequiredMessage>
+                        <div class="alert alert-danger"
+                            role="alert">
+                            Email Field is Required
+                        </div>
+                    </ng-template>
+
+                    <ng-template #invalidEmailMessage>
+                        <div *ngIf="email.invalid && registerFormRef.submitted" class="alert alert-danger" role="alert">
+                            Invalid Email
+                        </div>
+                    </ng-template>
+
+
 
                     <label for="password" class="mb-2">Password: </label>
                     <input placeholder='Password...' type="password" id="password" formControlName="password"
@@ -41,15 +54,55 @@
                     <label for="confirmPassword" class="mb-2">Confirm Password: </label>
                     <input placeholder='Confirm Password...' type="password" id="confirmPassword"
                         formControlName="confirmPassword" class="form-control mb-3" />
-                    <div *ngIf="confirmPassword.invalid && registerFormRef.submitted" class="alert alert-danger"
+
+                    <!-- <div *ngIf="confirmPassword.invalid && registerFormRef.submitted" class="alert alert-danger"
                         role="alert">
                         Confirm Password Field is Required
                     </div>
 
-                    <div *ngIf="password != confirmPassword" class="alert alert-danger"
-                        role="alert">
+                    <div *ngIf="password != confirmPassword" class="alert alert-danger" role="alert">
                         Confirm Password Field do not match the password !
-                    </div>
+                    </div> -->
+
+
+
+
+                    <ng-container
+                        *ngIf="confirmPassword.invalid && registerFormRef.submitted;   then confirmPassReq;
+                         
+                        *ngIf=password != confirmPassword && registerForm.touched; 
+                        then confAndPassDiff ">
+                    </ng-container>
+
+                    <ng-template #confirmPassReq>
+                        <div class="alert alert-danger"
+                            role="alert">
+                            Confirm Password Field is Required
+                        </div>
+                    </ng-template>
+
+                    <ng-template #confAndPassDiff>
+                        <div class="alert alert-danger"
+                            role="alert">
+                            Confirm Password Field do not match the password !
+                        </div>
+                    </ng-template>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
                     <div class="d-grid col-12 mx-auto p-0 mb-2">
