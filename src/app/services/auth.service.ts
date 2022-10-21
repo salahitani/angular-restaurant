@@ -13,7 +13,7 @@ export class AuthService {
       "email": email,
       "password": password
     };
-    return this.httpClient.post('http://localhost:8080/v1/api/auth/login', body);
+    return this.httpClient.post('http://localhost:8080/api/v1/auth/login', body);
   }
 
   // register(data) {
@@ -26,6 +26,6 @@ export class AuthService {
   // };
   
   // EQUAL to the above. everything after the arrow will be returned directly
-  register = (data) => this.httpClient.post('http://localhost:8080/v1/api/auth/register', data);
+  register = (data) => this.httpClient.post('http://localhost:8080/api/v1/auth/register', data);
 }
   
