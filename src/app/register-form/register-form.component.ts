@@ -23,20 +23,20 @@ export class RegisterFormComponent implements OnInit {
 
   validatePasswords = (passwordControl: AbstractControl, confirmPasswordControl: AbstractControl): ValidatorFn => {
     return () => {
-      if(passwordControl.value !== confirmPasswordControl.value) {
+      if (passwordControl.value !== confirmPasswordControl.value) {
         return { 'password_match': true }
       }
-      return null; 
+      return null;
     }
   };
-  
+
   initForm() {
     this.registerForm = this.fb.group({
-      firstName: ['', Validators.required],
-      lastName: ['', Validators.required],
+      firstName: ['Khaled', Validators.required],
+      lastName: ['Ramadan', Validators.required],
       email: ['', [Validators.required, Validators.email]],
-      password: ['', Validators.required],
-      confirmPassword: ['', Validators.required]
+      password: ['Password@123', Validators.required],
+      confirmPassword: ['Password@123', Validators.required]
     });
 
     this.registerForm.addValidators(
@@ -54,6 +54,7 @@ export class RegisterFormComponent implements OnInit {
   }
 
   onSubmit() {
+    console.log(this.registerForm.valid);
     if (this.registerForm.valid) {
       const registrationData = this.registerForm.value;
       const authObservable = this.authSerice.register(registrationData);

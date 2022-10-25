@@ -24,8 +24,8 @@ export class RestaurantsComponent implements OnInit {
   fetchAllRestaurant() {
     this.restaurantService.getAllRestaurants()
     .subscribe((response: any) => {
-      this.restaurants = response.Result;
-      this.totalRestaurant = response['Total Restaurants'];
+      this.restaurants = response.data;
+      this.totalRestaurant = response.data.length;
     });
   };
 

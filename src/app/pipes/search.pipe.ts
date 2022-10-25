@@ -8,7 +8,7 @@ export class SearchPipe implements PipeTransform {
   transform(left, right) {
     let filteredLeft = [];
     filteredLeft = left.filter(restaurant => {
-      if(restaurant.businessname.toLocaleLowerCase().includes(right.toLocaleLowerCase())) {
+      if(restaurant.name.toLocaleLowerCase().includes(right.toLocaleLowerCase())) {
         return restaurant;
       }
     });

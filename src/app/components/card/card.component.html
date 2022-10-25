@@ -6,7 +6,7 @@
     <div class="card-body">
         <h5 class="card-title">{{name}}</h5>
         <p class="card-text">{{type}}</p>
-        <p class="card-text">{{'2022-9-13' | date:'short' }}</p>
+        <p class="card-text">{{createdAt | date:'short' }}</p>
         <button class="btn btn-primary" (click)="onActionButtonClick()">Open</button>
     </div>
 </div>

@@ -11,6 +11,7 @@ export class CardComponent implements OnInit {
   @Input() image: string = '';
   @Input() name: string = '';
   @Input() type: string = '';
+  @Input() createdAt: string = '';
   @Output() buttonEmitter = new EventEmitter<string>();
 
   constructor() { }

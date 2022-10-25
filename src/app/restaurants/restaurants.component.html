@@ -12,8 +12,8 @@
     
     <div class="row">
         <div class="col-md-4 mb-4" *ngFor="let restaurant of restaurants | search:searchValue">
-            <app-card (buttonEmitter)="onOpenRestaurant($event)" [id]="restaurant.id" [image]="restaurant.image"
-                [name]="restaurant.businessname" [type]="restaurant.restauranttype"></app-card>
+            <app-card (buttonEmitter)="onOpenRestaurant($event)" [id]="restaurant.id" [image]="restaurant.image || 'assets/Images/placeholder-restaurant.png'"
+                [name]="restaurant.name" [type]="restaurant.cuisine" [createdAt]="restaurant.createdAt"></app-card>
         </div>
     </div>
 

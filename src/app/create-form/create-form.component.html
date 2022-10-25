@@ -1,35 +1,32 @@
 <div id="create-page" class="container">
   <div class="create-row row align-items-center justify-content-md-center">
-
-
-
-    <form [formGroup]="createform"  #createFormRef="ngForm" (ngSubmit)="onSubmit()">
+    <form [formGroup]="createform" #createFormRef="ngForm" (ngSubmit)="onSubmit()">
       <div class="form-group">
-        
-        <label for="name" class="mb-2">Business Name: </label>
-        <input placeholder='Business Name...' type="text" id="name" formControlName="businessname" class="form-control mb-3" />
-        <div *ngIf="businessname.hasError('required') && createFormRef.submitted" class="alert alert-danger" role="alert">
-          Business Name is Required
+        <label for="name" class="mb-2">Name: </label>
+        <input placeholder='Name...' type="text" id="name" formControlName="name" class="form-control mb-3" />
+        <div *ngIf="name.hasError('required') && createFormRef.submitted" class="alert alert-danger" role="alert">
+          Name is Required
         </div>
-
-        <label for="address" class="mb-2">Address: </label>
-        <input placeholder='Address...' type="text" id="address" formControlName="address" class="form-control mb-3" />
-        <div *ngIf="address.hasError('required') && createFormRef.submitted" class="alert alert-danger" role="alert">
-          Address Field is Required
+        <label for="type" class="mb-2">Cuisine: </label>
+        <input placeholder='Cuisine Name...' type="text" id="cuisine" formControlName="cuisine"
+          class="form-control mb-3" />
+        <div *ngIf="cuisine.hasError('required') && createFormRef.submitted" class="alert alert-danger" role="alert">
+          Cuisine Type is Required
         </div>
-
-        <label for="type" class="mb-2">Restaurant Type: </label>
-        <input placeholder='Restaurant Name...' type="text" id="type" formControlName="type" class="form-control mb-3" />
-        <div *ngIf="type.hasError('required') && createFormRef.submitted" class="alert alert-danger" role="alert">
-          Restaurant Type is Required
+        <label for="address" class="mb-2">Description: </label>
+        <textarea placeholder='Description...' type="text" id="description" formControlName="description"
+          class="form-control mb-3"></textarea>
+        <div *ngIf="description.hasError('required') && createFormRef.submitted" class="alert alert-danger"
+          role="alert">
+          Description Field is Required
         </div>
-
+      </div>
+      <div id="upload-field" class="mb-3">
+        <input (change)="onLogoChange($event)" type="file" accept="image/png, image/jpeg">
       </div>
       <div class="d-grid col-12 mx-auto p-0">
         <button type="submit" class="btn btn-primary">Submit</button>
       </div>
     </form>
-
-
   </div>
 </div>

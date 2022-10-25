@@ -1,13 +1,14 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Restaurant } from '../interfaces/restaurant';
 
 @Injectable({
   providedIn: 'root'
 })
 export class RestService {
 
-  baseURL: string = `https://foodbukka.herokuapp.com/api/v1/`;
-  
+  baseURL: string = `http://localhost:8080/api/v1/`;
+
   constructor(private httpClient: HttpClient) { }
 
   getAllRestaurants() {
@@ -22,21 +23,36 @@ export class RestService {
 
   };
 
-  postARestaurant(name,address,type)
-  {
-    const body =   {
-      "businessName": name,
-      "address": address,
-      "restaurantType": type
+  postARestaurant(restaurantData: Restaurant) {
+    // const { logo, ...remainingFields } = restaurantData;
+    const body: Restaurant = {
+      ...restaurantData
     };
-    
+
+    // ALTERNATIVE
+    // const body = {
+    //   name: restaurantData.name,
+    //   description: restaurantData.description,
+    //   cuisine: restaurantData.cuisine
+    // }
+    // const logo = restaurantData.logo
+
+    // const formData = new FormData();
+    // formData.append('logo', logo);  
+
     const headers = {
       'Authorization': `Bearer ${localStorage.getItem('token')}`,
-    }
-    
+    };
+
+
     return this.httpClient.post(`${this.baseURL}restaurant`, body, { headers });
   }
 
+  uploadLogo = (logo: File) => {
+    const formData = new FormData();
+    formData.append('logo', logo);  
+    return this.httpClient.post(`${this.baseURL}restaurant/upload-logo`, formData);
+  };
 
   updateARestaurant(id: String, updatedFields: any) {
 
