@@ -17,6 +17,11 @@ export class RestService {
     return observable;
   };
 
+  uploadRestaurantLogo(formData) {
+    const observable = this.httpClient.post(`${this.baseURL}restaurant/upload-logo`, formData);
+    return observable;
+  };
+
   getARestaurant(id: string) {
     const observable = this.httpClient.get(`${this.baseURL}restaurant/'${id}`);
     return observable;
@@ -24,26 +29,13 @@ export class RestService {
   };
 
   postARestaurant(restaurantData: Restaurant) {
-    // const { logo, ...remainingFields } = restaurantData;
     const body: Restaurant = {
       ...restaurantData
     };
 
-    // ALTERNATIVE
-    // const body = {
-    //   name: restaurantData.name,
-    //   description: restaurantData.description,
-    //   cuisine: restaurantData.cuisine
-    // }
-    // const logo = restaurantData.logo
-
-    // const formData = new FormData();
-    // formData.append('logo', logo);  
-
     const headers = {
       'Authorization': `Bearer ${localStorage.getItem('token')}`,
     };
-
 
     return this.httpClient.post(`${this.baseURL}restaurant`, body, { headers });
   }

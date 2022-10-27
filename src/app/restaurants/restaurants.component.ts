@@ -13,6 +13,8 @@ export class RestaurantsComponent implements OnInit {
   restaurants: any = [];
   totalRestaurant: Number = 0;
   searchValue: string = '';
+  baseURL: string = 'http://localhost:8080/'; // --> This is temp, it's better to be fetched from a config file
+  logoPlaceHolder: string = 'assets/Images/placeholder-restaurant.png';
 
   constructor(private router: Router, private route: ActivatedRoute, private restaurantService: RestService) {
   }
@@ -24,7 +26,10 @@ export class RestaurantsComponent implements OnInit {
   fetchAllRestaurant() {
     this.restaurantService.getAllRestaurants()
     .subscribe((response: any) => {
-      this.restaurants = response.data;
+      this.restaurants = response.data.map(restaurant => ({
+        ...restaurant,
+        logo: restaurant.logo ? `${this.baseURL}${restaurant.logo}` : this.logoPlaceHolder  
+      }));
       this.totalRestaurant = response.data.length;
     });
   };
