@@ -1,0 +1,25 @@
+<div id="restaurantcontainer" class="mt-5">
+  <div class="row mb-5">
+    <div class="col-md-10">
+      <input [(ngModel)]="searchValue" class="form-control mr-sm-2" type="search" placeholder="Search..."
+        aria-label="Search">
+    </div>
+    <div class="col-md-2">
+      <button class="btn btn-primary" (click)="onCreate()">Create</button>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-4 mb-4" *ngFor="let restaurant of restaurants | search:searchValue">
+      <app-card (buttonEmitter)="onOpenRestaurant($event)" [id]="restaurant._id" [image]="restaurant.logo"
+        [name]="restaurant.name" [type]="restaurant.cuisine" [createdAt]="restaurant.createdAt"></app-card>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-12">
+      Total Restaurant: {{totalRestaurant}}
+    </div>
+  </div>
+  
+</div>

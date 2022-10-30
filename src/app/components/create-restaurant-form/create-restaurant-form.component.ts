@@ -1,13 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { Restaurant } from '../interfaces/restaurant';
-import { RestService } from '../services/rest.service';
+import { Restaurant } from '../../interfaces/restaurant';
+import { RestService } from '../../services/rest.service';
 
 @Component({
   selector: 'app-create-form',
-  templateUrl: './create-form.component.html',
-  styleUrls: ['./create-form.component.css']
+  templateUrl: './create-restaurant-form.component.html',
+  styleUrls: ['./create-restaurant-form.component.css']
 })
 export class CreateFormComponent implements OnInit {
   createform: FormGroup;

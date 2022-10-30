@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { __param } from 'tslib';
-import { RestService } from '../services/rest.service';
+import { RestService } from '../../services/rest.service';
 
 @Component({
   selector: 'app-show-restaurant',
@@ -18,21 +18,14 @@ export class ShowRestaurantComponent implements OnInit {
   restaurant: any;
 
   ngOnInit(): void {
-
     this.route.params
       .subscribe(
         (data: Params) => {
           this.id = data['restaurantID'];
-          console.log(data) //log the entire params object
-          console.log(this.id) //log the value of id
           this.fetchRestaurant(this.id);
         }
       )
-
-
-
   }
-
 
   fetchRestaurant(id) {
     this.restaurantService.getARestaurant(id)

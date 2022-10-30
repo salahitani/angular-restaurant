@@ -2,15 +2,15 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { NotFoundComponent } from './pages/not-found/not-found.component';
 import { DashboardAccessGuard } from './dashboard-access.guard';
-import { DashboardComponent } from './dashboard/dashboard.component';
-import { GuesthousesComponent } from './guesthouses/guesthouses.component';
-import { HotelsComponent } from './hotels/hotels.component';
-import { LogInFormComponent } from './log-in-form/log-in-form.component';
+import { DashboardComponent } from './pages/dashboard/dashboard.component';
+import { GuesthousesComponent } from './pages/guesthouses/guesthouses.component';
+import { HotelsComponent } from './pages/hotels/hotels.component';
+import { LogInFormComponent } from './pages/log-in-form/log-in-form.component';
 import { LoginGuardGuard } from './login-guard.guard';
-import { RestaurantsComponent } from './restaurants/restaurants.component';
+import { RestaurantsComponent } from './pages/restaurants/restaurants.component';
 import { CreatePageComponent } from './pages/create-page/create-page.component';
-import { RegisterFormComponent } from './register-form/register-form.component';
-import { ShowRestaurantComponent } from './show-restaurant/show-restaurant.component';
+import { RegisterFormComponent } from './pages/register-form/register-form.component';
+import { ShowRestaurantComponent } from './pages/show-restaurant/show-restaurant.component';
 
 
 const routes: Routes = [

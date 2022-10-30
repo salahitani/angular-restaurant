@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { map } from 'rxjs';
-import { RestService } from '../services/rest.service';
+import { RestService } from '../../services/rest.service';
 
 @Component({
   selector: 'app-restaurants',
@@ -39,6 +39,7 @@ export class RestaurantsComponent implements OnInit {
   }
 
   onOpenRestaurant(id: string) {
+    console.log(id, 'id');
     this.router.navigate([`../restaurant/${id}`], { relativeTo: this.route });
   };
 
