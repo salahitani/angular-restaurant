@@ -13,7 +13,10 @@ export class RestService {
 
   getAllRestaurants() {
     // Reference: OLD Concat way: this.baseURL + 'restaurant';
-    const observable = this.httpClient.get(`${this.baseURL}restaurant`);
+    const headers = {
+      'Authorization': `Bearer ${localStorage.getItem('token')}`,
+    };
+    const observable = this.httpClient.get(`${this.baseURL}restaurant`, { headers });
     return observable;
   };
 
