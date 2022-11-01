@@ -39,7 +39,7 @@
             Confirm Password Field is Required
           </div>
           <div class="alert alert-danger"
-            *ngIf="!confirmPassword.hasError('required') && registerForm.errors['password_match'] && registerFormRef.submitted">
+            *ngIf="!confirmPassword.hasError('required') && registerForm.errors && registerForm.errors['password_match'] && registerFormRef.submitted">
             Doesn't Matched
           </div>
           <div class="d-grid col-12 mx-auto p-0 mb-2">

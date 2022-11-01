@@ -54,14 +54,13 @@ export class RegisterFormComponent implements OnInit {
   }
 
   onSubmit() {
-    console.log(this.registerForm.valid);
     if (this.registerForm.valid) {
-      const registrationData = this.registerForm.value;
-      const authObservable = this.authSerice.register(registrationData);
-      authObservable.subscribe((data: any) => {
-        this.saveToken(data.token);
-        this.router.navigateByUrl('dashboard/restaurants');
-      });
+    const registrationData = this.registerForm.value;
+    const authObservable = this.authSerice.register(registrationData);
+    authObservable.subscribe((data: any) => {
+      this.saveToken(data.token);
+      this.router.navigateByUrl('dashboard/restaurants');
+    });
     }
   }
 
