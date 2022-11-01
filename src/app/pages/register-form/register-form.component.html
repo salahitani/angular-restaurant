@@ -6,41 +6,31 @@
           <label for="firstName" class="mb-2">First Name: </label>
           <input placeholder='First Name...' type="text" id="firstName" formControlName="firstName"
             class="form-control mb-3" />
-          <div *ngIf="firstName.hasError('required') && registerFormRef.submitted" class="alert alert-danger"
-            role="alert">
-            First Name Field is Required
+          <div class="alert alert-danger" *ngIf="firstName.hasError('invalid')">
+            {{firstName.errors["invalid"]}}
           </div>
           <label for="lastName" class="mb-2">Last Name: </label>
           <input placeholder='Last Name...' type="text" id="pass" formControlName="lastName"
             class="form-control mb-3" />
-          <div *ngIf="lastName.invalid && registerFormRef.submitted" class="alert alert-danger" role="alert">
-            Last Name Field is Required
+          <div class="alert alert-danger" *ngIf="lastName.hasError('invalid')">
+            {{lastName.errors["invalid"]}}
           </div>
           <label for="email" class="mb-2">Email: </label>
           <input placeholder='Email...' type="email" id="email" formControlName="email" class="form-control mb-3" />
-
-          <div class="alert alert-danger" *ngIf="email.hasError('required') && registerFormRef.submitted">
-            Email Field is Required
-          </div>
-          <div class="alert alert-danger"
-            *ngIf="email.invalid && registerFormRef.submitted && !email.hasError('required')">
-            Invalid Email
+          <div class="alert alert-danger" *ngIf="email.hasError('invalid')">
+            {{email.errors["invalid"]}}
           </div>
           <label for="password" class="mb-2">Password: </label>
           <input placeholder='Password...' type="password" id="password" formControlName="password"
             class="form-control mb-3" />
-          <div *ngIf="password.invalid && registerFormRef.submitted" class="alert alert-danger" role="alert">
-            Password Field is Required
+          <div class="alert alert-danger" *ngIf="password.hasError('invalid')">
+            {{password.errors["invalid"]}}
           </div>
           <label for="confirmPassword" class="mb-2">Confirm Password: </label>
           <input placeholder='Confirm Password...' type="password" id="confirmPassword"
             formControlName="confirmPassword" class="form-control mb-3" />
-          <div class="alert alert-danger" *ngIf="confirmPassword.hasError('required') && registerFormRef.submitted">
-            Confirm Password Field is Required
-          </div>
-          <div class="alert alert-danger"
-            *ngIf="!confirmPassword.hasError('required') && registerForm.errors && registerForm.errors['password_match'] && registerFormRef.submitted">
-            Doesn't Matched
+          <div class="alert alert-danger" *ngIf="confirmPassword.hasError('invalid')">
+            {{confirmPassword.errors["invalid"]}}
           </div>
           <div class="d-grid col-12 mx-auto p-0 mb-2">
             <button type="submit" class="btn btn-primary">Register</button>

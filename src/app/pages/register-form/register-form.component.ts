@@ -32,11 +32,11 @@ export class RegisterFormComponent implements OnInit {
 
   initForm() {
     this.registerForm = this.fb.group({
-      firstName: ['Khaled', Validators.required],
-      lastName: ['Ramadan', Validators.required],
-      email: ['', [Validators.required, Validators.email]],
-      password: ['Password@123', Validators.required],
-      confirmPassword: ['Password@123', Validators.required]
+      firstName: [''],
+      lastName: [''],
+      email: [''],
+      password: [''],
+      confirmPassword: ['']
     });
 
     this.registerForm.addValidators(
@@ -54,14 +54,18 @@ export class RegisterFormComponent implements OnInit {
   }
 
   onSubmit() {
-    if (this.registerForm.valid) {
     const registrationData = this.registerForm.value;
     const authObservable = this.authSerice.register(registrationData);
     authObservable.subscribe((data: any) => {
       this.saveToken(data.token);
       this.router.navigateByUrl('dashboard/restaurants');
+    }, (exception) => {
+      const errors = exception.error.errors;
+      const errorsKeys = Object.keys(errors);
+      errorsKeys.forEach(key => {
+        this.registerForm.controls[key].setErrors({ "invalid": errors[key] });
+      });
     });
-    }
   }
 
   saveToken(token) {
