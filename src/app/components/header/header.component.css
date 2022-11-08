@@ -1,21 +1,10 @@
-.logo-image{
-    width: 46px;
-    height: 46px;
-    border-radius: 50%;
-    overflow: hidden;
-    margin-top: -6px;
-}
-
-.navbar-light .navbar-nav .nav-link {
+/* .navbar-light .navbar-nav .nav-link {
     color: rgba(14, 14, 14, 0.5);
     font-weight: bold;
 }
+ */
 
-
-.logo-image{
+ .logo-image {
     width: 100px;
-    height: 100px;
-    border-radius: 50%;
-    overflow: hidden;
-    margin-top: -6px;
-}
+ }
+
