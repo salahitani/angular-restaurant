@@ -39,28 +39,37 @@ export class LogInFormComponent implements OnInit {
         this.saveToken(data.token);
         this.router.navigateByUrl('dashboard/restaurants');
       }, (exception) => {
+        this.handleException(exception);
         this.isLoading = false;
-        console.log(exception);
-        const loginErrorMessage = exception.error.error;
-        console.log(loginErrorMessage);
-        
-        const errors = exception.error.errors;
-        console.log(errors);
+      });
+    }
+  }
+
+  handleException(exception) {
+    // const errors = exception.error.errors --> Same as the below
+    // const status = exception.status --> Same as the below
+    const { error: { errors }, status } = exception;
+    switch (status) {
+      case 400:
         const errorsKeys = Object.keys(errors);
         errorsKeys.forEach(key => {
           this.loginForm.controls[key].setErrors({ "invalid": errors[key] });
-          
         });
-      });
-      // authObservable.subscribe({
-      //   next(data: any) {
-      //   }, error(exception) {
-      //     this.isLoading = false;
-      //   }, complete() {
-      //     this.isLoading = false;
-      //   }
-      // });
+        break;
+      case 404:
+        this.loginErrorMessage = errors.generic;
+        break;
+      default:
+        this.loginErrorMessage = 'An error occurred'
     }
+    // authObservable.subscribe({
+    //   next(data: any) {
+    //   }, error(exception) {
+    //     this.isLoading = false;
+    //   }, complete() {
+    //     this.isLoading = false;
+    //   }
+    // });
   }
 
   // For Later: It's better to be inside a util
