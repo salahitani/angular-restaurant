@@ -1,21 +1,33 @@
 <div id="headerid">
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand" href="#">LOGOHERE</a>
-    <ul class="nav nav-tabs">
+    
+    <a class="navbar-brand" href="/">
+      <div class="logo-image">
+        <img src="../assets\Images\placeholder-restaurant.png" class="img-fluid">
+      </div>
+    </a>
+    
+
+    <ul class="navbar-nav">
+
       <li class="nav-item">
         <a class="nav-link active" aria-current="page" href="#" [routerLink]="['dashboard/restaurants']">Restaurants</a>
       </li>
+
       <li class="nav-item">
         <a class="nav-link" href="#" [routerLink]="['dashboard/hotels']">Hotels</a>
       </li>
+
       <li class="nav-item">
         <a class="nav-link" href="#" [routerLink]="['dashboard/guesthouses']">Guest Houses</a>
       </li>
+
     </ul>
-      
-    <span class="nav navbar-nav ms-auto">
-        <li id="logout">
-          <a class="nav-link" href="#" (click)="onLogout()">LogOut</a>
-        </li>
-      </span>
-   
+
+    <div id="logout" class="nav navbar-nav ms-auto">
+      <li id="logout">
+        <a class="nav-link" href="#" (click)="onLogout()">LogOut</a>
+      </li>
+    </div>
+  </nav>
+</div>

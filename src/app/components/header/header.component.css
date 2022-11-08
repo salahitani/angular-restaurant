@@ -7,6 +7,19 @@
 }
 
 .navbar-light .navbar-nav .nav-link {
-    color: rgb(247 0 0 / 50%);
+    color: rgba(14, 14, 14, 0.5);
     font-weight: bold;
+}
+
+.navbar-nav .logout {
+    color: rgba(249, 3, 3, 0.5);
+    font-weight: bold;
+}
+
+.logo-image{
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    overflow: hidden;
+    margin-top: -6px;
 }

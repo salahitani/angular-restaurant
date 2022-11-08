@@ -23,8 +23,8 @@ export class LogInFormComponent implements OnInit {
 
   initForm() {
     this.loginForm = new FormGroup({
-      email: new FormControl('', [Validators.required, Validators.email]),
-      password: new FormControl('', [Validators.required])
+      email: new FormControl(''),
+      password: new FormControl('')
     });
   }
 
@@ -40,7 +40,17 @@ export class LogInFormComponent implements OnInit {
         this.router.navigateByUrl('dashboard/restaurants');
       }, (exception) => {
         this.isLoading = false;
-        this.loginErrorMessage = exception.error.error;
+        console.log(exception);
+        const loginErrorMessage = exception.error.error;
+        console.log(loginErrorMessage);
+        
+        const errors = exception.error.errors;
+        console.log(errors);
+        const errorsKeys = Object.keys(errors);
+        errorsKeys.forEach(key => {
+          this.loginForm.controls[key].setErrors({ "invalid": errors[key] });
+          
+        });
       });
       // authObservable.subscribe({
       //   next(data: any) {
