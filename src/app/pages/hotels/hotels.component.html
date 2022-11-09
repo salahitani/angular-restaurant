@@ -1,18 +1,25 @@
-<div id="hotelscontainer" class="container mt-5">
+<div id="restaurantcontainer" class="mt-5">
     <div class="row mb-5">
-        <div class="col-12 align-content-end">
-            <button type="submit" class="btn btn-primary" (click)="onCreate()">Create</button>
-        </div>
+      <div class="col-md-10">
+        <input [(ngModel)]="searchValue" class="form-control mr-sm-2" type="search" placeholder="Search..."
+          aria-label="Search">
+      </div>
+      <div class="col-md-2">
+        <button class="btn btn-primary" (click)="onCreate()">Create</button>
+      </div>
     </div>
-
-
-
+  
     <div class="row">
-        <div class="list-group">
-            <a href="#" class="list-group-item list-group-item-action">Movenpick</a>
-            <a href="#" class="list-group-item list-group-item-action">Phonecia</a>
-            <a href="#" class="list-group-item list-group-item-action">Habtour</a>
-            <a href="#" class="list-group-item list-group-item-action">Comodor</a>
-        </div>
+      <div class="col-md-4 mb-4" *ngFor="let hotel of hotels | search:searchValue">
+        <app-card (buttonEmitter)="onOpenRestaurant($event)" [id]="hotel._id" [image]="hotel.logo"
+          [name]="hotel.name" [type]="hotel.cuisine" [createdAt]="hotel.createdAt"></app-card>
+      </div>
     </div>
-</div>
+  
+    <div class="row">
+      <div class="col-md-12">
+        Total Hotels: {{totalHotels}}
+      </div>
+    </div>
+    
+  </div>
