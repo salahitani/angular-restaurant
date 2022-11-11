@@ -12,12 +12,12 @@ import { RouterModule } from '@angular/router';
 import { RestaurantsComponent } from './pages/restaurants/restaurants.component';
 import { HotelsComponent } from './pages/hotels/hotels.component';
 import { GuesthousesComponent } from './pages/guesthouses/guesthouses.component';
-import { CreateFormComponent } from './components/create-restaurant-form/create-restaurant-form.component';
+import { RestaurantFormComponent } from './components/restaurant-form/restaurant-form.component';
 import { NotFoundComponent } from './pages/not-found/not-found.component';
 import { CreatePageComponent } from './pages/create-page/create-page.component';
 import { HttpClientModule } from '@angular/common/http';
 import { RegisterFormComponent } from './pages/register-form/register-form.component';
-import { ShowRestaurantComponent } from './pages/show-restaurant/show-restaurant.component';
+import { EditRestaurantComponent } from './pages/edit-restaurant/edit-restaurant.component';
 import { SearchPipe } from './pipes/search.pipe';
 import { CardComponent } from './components/card/card.component';
 import { ZoomInDirective } from './directives/zoom-in.directive';
@@ -33,11 +33,11 @@ import { ZoomInDirective } from './directives/zoom-in.directive';
     RestaurantsComponent,
     HotelsComponent,
     GuesthousesComponent,
-    CreateFormComponent,
+    RestaurantFormComponent,
     NotFoundComponent,
     CreatePageComponent,
     RegisterFormComponent,
-    ShowRestaurantComponent,
+    EditRestaurantComponent,
     SearchPipe,
     CardComponent,
     ZoomInDirective

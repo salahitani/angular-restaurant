@@ -30,7 +30,6 @@ export class ClassBindingComponent implements OnInit {
 
   logSomething() {
     this.mode = this.mode === 'dark' ? 'light' : 'dark';
-    console.log(this.mode);
     this.styles['background-color'] = this.mode === 'light' ? 'yellow' : 'black';
   };
 

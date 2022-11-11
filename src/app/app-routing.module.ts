@@ -10,7 +10,7 @@ import { LoginGuardGuard } from './login-guard.guard';
 import { RestaurantsComponent } from './pages/restaurants/restaurants.component';
 import { CreatePageComponent } from './pages/create-page/create-page.component';
 import { RegisterFormComponent } from './pages/register-form/register-form.component';
-import { ShowRestaurantComponent } from './pages/show-restaurant/show-restaurant.component';
+import { EditRestaurantComponent } from './pages/edit-restaurant/edit-restaurant.component';
 
 
 const routes: Routes = [
@@ -29,7 +29,7 @@ const routes: Routes = [
       path: 'create/:category', component: CreatePageComponent
     },
     {
-      path: 'restaurant/:restaurantID', component: ShowRestaurantComponent
+      path: 'restaurant/:restaurantID', component: EditRestaurantComponent
     }]
   },
   {

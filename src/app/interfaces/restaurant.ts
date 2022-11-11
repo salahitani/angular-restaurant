@@ -1,6 +1,6 @@
 export interface Restaurant {
-    name: String;
-    description: String;
-    cuisine: String;
+    name: string;
+    description: string;
+    cuisine: string;
     logo?: File;
 };

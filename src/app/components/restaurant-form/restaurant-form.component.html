@@ -1,5 +1,5 @@
 <div id="create-page">
-  <form [formGroup]="createform" #createFormRef="ngForm" (ngSubmit)="onSubmit()">
+  <form [formGroup]="createform" #createFormRef="ngForm" (ngSubmit)="onFormSubmittion()">
     <div class="form-group">
       <label for="name" class="mb-2">Name: </label>
       <input placeholder='Name...' type="text" id="name" formControlName="name" class="form-control mb-3" />
@@ -23,7 +23,7 @@
       <input (change)="onLogoChange($event)" type="file" accept="image/png, image/jpeg, image/*">
     </div>
     <div class="d-grid col-12 mx-auto p-0">
-      <button type="submit" class="btn btn-primary">Submit</button>
+      <button type="submit" class="btn btn-primary">{{mode === 'EDIT' ? 'Edit' : 'Submit'}}</button>
     </div>
   </form>
 </div>

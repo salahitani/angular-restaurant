@@ -39,7 +39,6 @@ export class RestaurantsComponent implements OnInit {
   }
 
   onOpenRestaurant(id: string) {
-    console.log(id, 'id');
     this.router.navigate([`../restaurant/${id}`], { relativeTo: this.route });
   };
 

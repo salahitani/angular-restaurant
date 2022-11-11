@@ -1,2 +1,2 @@
-<p class="mb-5 mt-5 lead ">Create {{category}}:</p>
-<app-create-form></app-create-form>
+<p class="mb-3 mt-5">Create {{category}}</p>
+<restaurant-form (onSubmit)="onCreate($event)" [mode]="mode"></restaurant-form>

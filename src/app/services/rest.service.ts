@@ -45,12 +45,20 @@ export class RestService {
 
   uploadLogo = (logo: File) => {
     const formData = new FormData();
-    formData.append('logo', logo);  
+    formData.append('logo', logo);
     return this.httpClient.post(`${this.baseURL}restaurant/upload-logo`, formData);
   };
 
-  updateARestaurant(id: String, updatedFields: any) {
+  updateARestaurant(id: String, restaurantData: any) {
+    const body: Restaurant = {
+      ...restaurantData
+    };
 
+    const headers = {
+      'Authorization': `Bearer ${localStorage.getItem('token')}`,
+    };
+
+    return this.httpClient.put(`${this.baseURL}restaurant/${id}`, body, { headers });
   };
 
   deleteARestaurant(id: String) {
