@@ -22,27 +22,37 @@ export class CreatePageComponent implements OnInit {
     this.category = this.route.snapshot.paramMap.get('category');
   }
 
-  onCreate(data: Restaurant) {
+  async onCreate(data: Restaurant) {
     try {
-      // if (this.createform.invalid) {
-      //   return;
-      // }
-      // let logoName = '';
-      // if (this.logo) {
-      //   logoName = await this.uploadImage();
-      // }
-      this.createRestaurant(data);
+      let restaurantData = { ...data };
+      if ('logo' in restaurantData) {
+        const logoName = await this.uploadImage(restaurantData.logo);
+        restaurantData = { ...restaurantData, logo: logoName };
+      }
+      this.createRestaurant(restaurantData);
     } catch (exception) {
       console.log(exception);
     }
-    // console.log("I will run the post code.");
   }
 
   createRestaurant = async (data: Restaurant) => {
-    // const formValue = { ...this.createform.value, logo: logoName }
     const formValue = { ...data };
     const createRestaurantObservable = this.restService.postARestaurant(formValue);
     createRestaurantObservable.subscribe(data => this.router.navigateByUrl('dashboard/restaurants'));
   }
+
+  uploadImage = (logo: File): Promise<any> => {
+    return new Promise((resolve, reject) => {
+      const logoFormData = new FormData();
+      logoFormData.append('logo', logo);
+      const uploadObservable = this.restService.uploadRestaurantLogo(logoFormData);
+      uploadObservable.subscribe((data: any) => {
+        resolve(data.filename);
+      }, (exception) => {
+        reject(exception);
+      });
+    });
+  }
+
 
 }

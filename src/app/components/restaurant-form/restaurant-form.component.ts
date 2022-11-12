@@ -38,44 +38,16 @@ export class RestaurantFormComponent implements OnInit {
     if (this.createform.invalid) {
       return;
     }
-    this.onSubmit.emit(this.createform.value);
+    if (this.logo) {
+      this.onSubmit.emit({ ...this.createform.value, logo: this.logo });
+    } else {
+      this.onSubmit.emit({ ...this.createform.value });
+    }
   }
 
   onRestaurantDelete() {
     this.onDelete.emit();
   };
-  
-  // async onSubmit() {
-
-  //   try {
-  //     if (this.createform.invalid) {
-  //       return;
-  //     }
-  //     let logoName = '';
-  //     if (this.logo) {
-  //       logoName = await this.uploadImage();
-  //     }
-  //     this.createRestaurant(logoName);
-  //   } catch (exception) {
-  //     console.log(exception);
-  //   }
-
-  // }
-
-  // uploadImage = (): Promise<any> => {
-  //   return new Promise((resolve, reject) => {
-  //     const logoFormData = new FormData();
-  //     logoFormData.append('logo', this.logo);
-  //     const uploadObservable = this.restService.uploadRestaurantLogo(logoFormData);
-  //     uploadObservable.subscribe((data: any) => {
-  //       resolve(data.filename);
-  //     }, (exception) => {
-  //       reject(exception);
-  //     });
-  //   });
-  // }
-
-
 
   onLogoChange = (event) => {
     if (event.target.files.length) {
@@ -94,7 +66,5 @@ export class RestaurantFormComponent implements OnInit {
   get cuisine() {
     return this.createform.get('cuisine');
   }
-
-
 
 }
