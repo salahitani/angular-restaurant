@@ -62,7 +62,10 @@ export class RestService {
   };
 
   deleteARestaurant(id: String) {
-
+    const headers = {
+      'Authorization': `Bearer ${localStorage.getItem('token')}`,
+    };
+    return this.httpClient.delete(`${this.baseURL}restaurant/${id}`, { headers });
   };
 
 }

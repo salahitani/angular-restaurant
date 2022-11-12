@@ -13,6 +13,7 @@ export class RestaurantFormComponent implements OnInit {
   createform: FormGroup;
   logo: File;
   @Output() onSubmit = new EventEmitter<Restaurant>();
+  @Output() onDelete = new EventEmitter<any>();
   @Input() mode = 'CREATE';
   @Input() restaurantCuisine: string = '';
   @Input() restaurantName: string = '';
@@ -39,6 +40,10 @@ export class RestaurantFormComponent implements OnInit {
     }
     this.onSubmit.emit(this.createform.value);
   }
+
+  onRestaurantDelete() {
+    this.onDelete.emit();
+  };
   
   // async onSubmit() {
 

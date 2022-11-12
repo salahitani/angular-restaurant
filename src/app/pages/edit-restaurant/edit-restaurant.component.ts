@@ -50,10 +50,24 @@ export class EditRestaurantComponent implements OnInit {
     }
   }
 
+  onDelete = () => {
+    try {
+      this.deleteRestaurant();
+    } catch (exception) {
+      console.log(exception);
+    }
+  }
+
   editRestaurant = (data: Restaurant) => {
     const formValue = { ...data };
     const createRestaurantObservable = this.restaurantService.updateARestaurant(this.id, formValue);
     createRestaurantObservable.subscribe(data => this.router.navigateByUrl('dashboard/restaurants'));
   }
+
+  deleteRestaurant = () => {
+    const deleteRestaurantObservable = this.restaurantService.deleteARestaurant(this.id);
+    deleteRestaurantObservable.subscribe(data => this.router.navigateByUrl('dashboard/restaurants'));
+  }
+
 
 }
