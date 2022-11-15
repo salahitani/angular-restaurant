@@ -41,6 +41,7 @@ export class CreatePageComponent implements OnInit {
     createRestaurantObservable.subscribe(data => this.router.navigateByUrl('dashboard/restaurants'));
   }
 
+  // This should be in a utils or a service
   uploadImage = (logo: File): Promise<any> => {
     return new Promise((resolve, reject) => {
       const logoFormData = new FormData();

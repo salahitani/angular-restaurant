@@ -4,31 +4,44 @@
       <i class="fa  fa-regular fa-trash"></i>
     </button>
   </div>
-  <form [formGroup]="createform" #createFormRef="ngForm" (ngSubmit)="onFormSubmittion()">
-    <div class="form-group">
-      <label for="name" class="mb-2">Name: </label>
-      <input placeholder='Name...' type="text" id="name" formControlName="name" class="form-control mb-3" />
-      <div *ngIf="name.hasError('required') && createFormRef.submitted" class="alert alert-danger" role="alert">
-        Name is Required
-      </div>
-      <label for="type" class="mb-2">Cuisine: </label>
-      <input placeholder='Cuisine Name...' type="text" id="cuisine" formControlName="cuisine"
-        class="form-control mb-3" />
-      <div *ngIf="cuisine.hasError('required') && createFormRef.submitted" class="alert alert-danger" role="alert">
-        Cuisine Type is Required
-      </div>
-      <label for="address" class="mb-2">Description: </label>
-      <textarea placeholder='Description...' type="text" id="description" formControlName="description"
-        class="form-control mb-3"></textarea>
-      <div *ngIf="description.hasError('required') && createFormRef.submitted" class="alert alert-danger" role="alert">
-        Description Field is Required
-      </div>
+  <div class="row">
+    <div class="col-md">
+      <form [formGroup]="createform" #createFormRef="ngForm" (ngSubmit)="onFormSubmittion()">
+        <div class="form-group">
+          <label for="name" class="mb-2">Name: </label>
+          <input placeholder='Name...' type="text" id="name" formControlName="name" class="form-control mb-3" />
+          <div *ngIf="name.hasError('required') && createFormRef.submitted" class="alert alert-danger" role="alert">
+            Name is Required
+          </div>
+          <label for="type" class="mb-2">Cuisine: </label>
+          <input placeholder='Cuisine Name...' type="text" id="cuisine" formControlName="cuisine"
+            class="form-control mb-3" />
+          <div *ngIf="cuisine.hasError('required') && createFormRef.submitted" class="alert alert-danger" role="alert">
+            Cuisine Type is Required
+          </div>
+          <label for="address" class="mb-2">Description: </label>
+          <textarea placeholder='Description...' type="text" id="description" formControlName="description"
+            class="form-control mb-3"></textarea>
+          <div *ngIf="description.hasError('required') && createFormRef.submitted" class="alert alert-danger"
+            role="alert">
+            Description Field is Required
+          </div>
+        </div>
+        <div class="d-grid col-12 mx-auto p-0">
+          <button type="submit" class="btn btn-primary">{{mode === 'EDIT' ? 'Edit' : 'Submit'}}</button>
+        </div>
+      </form>
     </div>
-    <div id="upload-field" class="mb-3">
-      <input (change)="onLogoChange($event)" type="file" accept="image/png, image/jpeg, image/*">
+    <div class="col-md">
+      <div class="upload-logo" [ngStyle]="{'background-image': 'url('+ (logoURL ? logoURL : baseURL + restaurantLogo) + ')'}">
+        <label class="upload-logo-btn" for="upload-logo">
+          <span>
+            {{mode === 'EDIT' ? 'E' : 'U'}}
+          </span>
+        </label>
+      </div>
+      <br>
+      <input id="upload-logo" (change)="onLogoChange($event)" type="file" accept="image/png, image/jpeg, image/*">
     </div>
-    <div class="d-grid col-12 mx-auto p-0">
-      <button type="submit" class="btn btn-primary">{{mode === 'EDIT' ? 'Edit' : 'Submit'}}</button>
-    </div>
-  </form>
+  </div>
 </div>

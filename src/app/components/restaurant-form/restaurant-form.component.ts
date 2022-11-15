@@ -12,12 +12,15 @@ import { RestService } from '../../services/rest.service';
 export class RestaurantFormComponent implements OnInit {
   createform: FormGroup;
   logo: File;
+  logoURL: string = '';
+  baseURL: string = 'http://localhost:8080/';
   @Output() onSubmit = new EventEmitter<Restaurant>();
   @Output() onDelete = new EventEmitter<any>();
   @Input() mode = 'CREATE';
   @Input() restaurantCuisine: string = '';
   @Input() restaurantName: string = '';
   @Input() restaurantDescription: string = '';
+  @Input() restaurantLogo: string = '';
 
   ngOnInit() {
   }
@@ -52,6 +55,7 @@ export class RestaurantFormComponent implements OnInit {
   onLogoChange = (event) => {
     if (event.target.files.length) {
       this.logo = event.target.files[0];
+      this.logoURL = URL.createObjectURL(this.logo);
     }
   };
 

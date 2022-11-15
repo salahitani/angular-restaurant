@@ -42,9 +42,14 @@ export class EditRestaurantComponent implements OnInit {
       });
   }
 
-  onEdit(data: Restaurant) {
+  async onEdit(data: Restaurant) {
     try {
-      this.editRestaurant(data);
+      let restaurantData = { ...data };
+      if ('logo' in restaurantData) {
+        const logoName = await this.uploadImage(restaurantData.logo);
+        restaurantData = { ...restaurantData, logo: logoName };
+      }
+      this.editRestaurant(restaurantData);
     } catch (exception) {
       console.log(exception);
     }
@@ -67,6 +72,20 @@ export class EditRestaurantComponent implements OnInit {
   deleteRestaurant = () => {
     const deleteRestaurantObservable = this.restaurantService.deleteARestaurant(this.id);
     deleteRestaurantObservable.subscribe(data => this.router.navigateByUrl('dashboard/restaurants'));
+  };
+
+  // This should be in a utils or a service
+  uploadImage = (logo: File): Promise<any> => {
+    return new Promise((resolve, reject) => {
+      const logoFormData = new FormData();
+      logoFormData.append('logo', logo);
+      const uploadObservable = this.restaurantService.uploadRestaurantLogo(logoFormData);
+      uploadObservable.subscribe((data: any) => {
+        resolve(data.filename);
+      }, (exception) => {
+        reject(exception);
+      });
+    });
   }
 
 
