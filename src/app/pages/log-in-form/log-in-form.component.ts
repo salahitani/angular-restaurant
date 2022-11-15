@@ -1,6 +1,7 @@
 import { Component, NgZone, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { UtilsService } from 'src/app/services/utils.service';
 import { AuthService } from '../../services/auth.service';
 
 
@@ -14,7 +15,7 @@ export class LogInFormComponent implements OnInit {
   isLoading: Boolean = false;
   loginErrorMessage: string = '';
 
-  constructor(private router: Router, private authService: AuthService, private ngZone: NgZone) {
+  constructor(private router: Router, private authService: AuthService, private utilsService: UtilsService) {
   }
 
   ngOnInit() {
@@ -29,25 +30,24 @@ export class LogInFormComponent implements OnInit {
   }
 
   onSubmit() {
-    if (this.loginForm.valid) {
-      this.isLoading = true;
-      const email = this.loginForm.get('email').value;
-      const password = this.loginForm.get('password').value;
-      const authObservable = this.authService.login(email, password);
-      authObservable.subscribe((data: any) => {
-        this.isLoading = false;
-        this.saveToken(data.token);
-        this.router.navigateByUrl('dashboard/restaurants');
-      }, (exception) => {
-        this.handleException(exception);
-        this.isLoading = false;
-      });
+    if (this.loginForm.invalid) {
+      return;
     }
+    this.isLoading = true;
+    const email = this.loginForm.get('email').value;
+    const password = this.loginForm.get('password').value;
+    const authObservable = this.authService.login(email, password);
+    authObservable.subscribe((data: any) => {
+      this.isLoading = false;
+      this.saveToken(data.token);
+      this.router.navigateByUrl('dashboard/restaurants');
+    }, (exception) => {
+      this.handleException(exception);
+      this.isLoading = false;
+    });
   }
 
   handleException(exception) {
-    // const errors = exception.error.errors --> Same as the below
-    // const status = exception.status --> Same as the below
     const { error: { errors }, status } = exception;
     switch (status) {
       case 400:
@@ -62,19 +62,10 @@ export class LogInFormComponent implements OnInit {
       default:
         this.loginErrorMessage = 'An error occurred'
     }
-    // authObservable.subscribe({
-    //   next(data: any) {
-    //   }, error(exception) {
-    //     this.isLoading = false;
-    //   }, complete() {
-    //     this.isLoading = false;
-    //   }
-    // });
   }
 
-  // For Later: It's better to be inside a util
   saveToken(token) {
-    localStorage.setItem('token', token);
+    this.utilsService.saveToken(token);
   }
 
   get email() {

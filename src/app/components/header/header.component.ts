@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { UtilsService } from 'src/app/services/utils.service';
 
 @Component({
   selector: 'app-header',
@@ -10,13 +11,13 @@ export class HeaderComponent implements OnInit {
 
   imageSrc = 'src/assets/Images/Logo1.png';
 
-  constructor(private router: Router) {}
+  constructor(private router: Router, private utilsService: UtilsService ) {}
 
   ngOnInit(): void {
   }
 
   onLogout() {
-    localStorage.removeItem('token');
+    this.utilsService.removeToken();
     this.router.navigateByUrl('/login');
   }
 

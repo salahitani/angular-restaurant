@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Hotel } from '../interfaces/hotel';
+import { UtilsService } from './utils.service';
 
 @Injectable({
   providedIn: 'root'
@@ -8,14 +9,17 @@ import { Hotel } from '../interfaces/hotel';
 export class HotelService {
 
   baseURL: string = `http://localhost:8080/api/v1/`;
+  token: string = '';
 
-  constructor(private httpClient: HttpClient) { }
+  constructor(private httpClient: HttpClient, private utilsService: UtilsService) {
+    this.token = this.utilsService.getToken();
+  }
 
 
   getAllHotels() {
     // Reference: OLD Concat way: this.baseURL + 'restaurant';
     const headers = {
-      'Authorization': `Bearer ${localStorage.getItem('token')}`,
+      'Authorization': `Bearer ${this.token}`,
     };
     const observable = this.httpClient.get(`${this.baseURL}hotel`, { headers });
     return observable;
@@ -38,7 +42,7 @@ export class HotelService {
     };
 
     const headers = {
-      'Authorization': `Bearer ${localStorage.getItem('token')}`,
+      'Authorization': `Bearer ${this.token}`,
     };
 
     return this.httpClient.post(`${this.baseURL}hotel`, body, { headers });
@@ -46,7 +50,7 @@ export class HotelService {
 
   uploadLogo = (logo: File) => {
     const formData = new FormData();
-    formData.append('logo', logo);  
+    formData.append('logo', logo);
     return this.httpClient.post(`${this.baseURL}hotel/upload-logo`, formData);
   };
 

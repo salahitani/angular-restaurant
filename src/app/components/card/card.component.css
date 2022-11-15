@@ -1,8 +1,9 @@
 .card-img-top {
     width: 100%;
+    margin: 0 auto;
     height: 250px;
     background-position: center;
     background-repeat: no-repeat;
-    background-size: 110%;
+    background-size: 100%;
     transition: all 2s;
 }

@@ -1,4 +1,5 @@
 import { Component, OnInit} from '@angular/core';
+import { UtilsService } from './services/utils.service';
 
 
 
@@ -10,9 +11,13 @@ import { Component, OnInit} from '@angular/core';
 })
 export class AppComponent {
   title = 'cms';
+
+  constructor(private utilsService: UtilsService) {
+
+  }
  
   get checkToken () {
-    const token = localStorage.getItem('token');
+    const token = this.utilsService.getToken();
     if(token) {
       return true;
     }

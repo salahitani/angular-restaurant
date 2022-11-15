@@ -2,6 +2,7 @@ import { formatCurrency } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators, FormBuilder, ValidatorFn, AbstractControl } from '@angular/forms';
 import { Router } from '@angular/router';
+import { UtilsService } from 'src/app/services/utils.service';
 import { AuthService } from '../../services/auth.service';
 
 @Component({
@@ -13,7 +14,7 @@ export class RegisterFormComponent implements OnInit {
 
   registerForm: FormGroup;
 
-  constructor(private router: Router, private authSerice: AuthService, private fb: FormBuilder) { }
+  constructor(private router: Router, private authSerice: AuthService, private fb: FormBuilder, private utilsService: UtilsService) { }
 
 
 
@@ -69,7 +70,7 @@ export class RegisterFormComponent implements OnInit {
   }
 
   saveToken(token) {
-    localStorage.setItem('token', token);
+    this.utilsService.saveToken(token);
   }
 
 

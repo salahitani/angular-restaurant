@@ -1,6 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Restaurant } from '../interfaces/restaurant';
+import { UtilsService } from './utils.service';
 
 @Injectable({
   providedIn: 'root'
@@ -8,13 +9,15 @@ import { Restaurant } from '../interfaces/restaurant';
 export class RestService {
 
   baseURL: string = `http://localhost:8080/api/v1/`;
-
-  constructor(private httpClient: HttpClient) { }
+  token: string = '';
+  constructor(private httpClient: HttpClient, private utilsService: UtilsService) {
+    this.token = this.utilsService.getToken();
+  }
 
   getAllRestaurants() {
     // Reference: OLD Concat way: this.baseURL + 'restaurant';
     const headers = {
-      'Authorization': `Bearer ${localStorage.getItem('token')}`,
+      'Authorization': `Bearer ${this.token}`,
     };
     const observable = this.httpClient.get(`${this.baseURL}restaurant`, { headers });
     return observable;
@@ -37,7 +40,7 @@ export class RestService {
     };
 
     const headers = {
-      'Authorization': `Bearer ${localStorage.getItem('token')}`,
+      'Authorization': `Bearer ${this.token}`,
     };
 
     return this.httpClient.post(`${this.baseURL}restaurant`, body, { headers });
@@ -55,7 +58,7 @@ export class RestService {
     };
 
     const headers = {
-      'Authorization': `Bearer ${localStorage.getItem('token')}`,
+      'Authorization': `Bearer ${this.token}`,
     };
 
     return this.httpClient.put(`${this.baseURL}restaurant/${id}`, body, { headers });
@@ -63,7 +66,7 @@ export class RestService {
 
   deleteARestaurant(id: String) {
     const headers = {
-      'Authorization': `Bearer ${localStorage.getItem('token')}`,
+      'Authorization': `Bearer ${this.token}`,
     };
     return this.httpClient.delete(`${this.baseURL}restaurant/${id}`, { headers });
   };
